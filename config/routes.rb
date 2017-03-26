@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  resources :steps
-  resources :tags
-  resources :resources
-  resources :users
-  resources :jobs
-  resources :actions
-  resources :contacts
-  resources :orgs
-  root 'welcome#index'
+  devise_for :users
+  root 'static#index'
+  get '/home', to: 'static#index' 
+  resources :steps, :tags, :resources, :jobs, :contacts, :orgs
+
+  resources :users do 
+    resources :actions
+  end
 end
