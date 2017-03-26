@@ -3,12 +3,27 @@
 [x] verify heroku still works
 
 db
-[x]   move migrations
-[]    tweak seed file
+[x] move migrations
+[x] install Devise views
+[]  adapt seed file to updated models/tables
 []    rearrange Steps as: 
 []       (1)techprep 
 []       (2)branding
 []       (3)jobsearch
+[]  update README with installation steps and seed file instructions
+[]  document intended business logic
+[] setup ERD, installation, app documention in a view
+
+[] text parsing API for grabbing contact info while surfing
+[] text parsing of links, prompt to add tags, to build library resources
+[] set up GoogleDocs and access to the app, use Avi's BattleDecks lecture
+[] start incorporating tips from career prep track into todo lists
+      user can select tips to turn them into 'Actions'
+      Actions then become part of the User's daily awareness
+[] Step Methods:
+      turn them into triggered behaviors
+      prompt User for them, offering breakdown of intermediate action steps that will lead to succes on the current Step
+[] Setup MailGun with communications to Coach
 
 
 
