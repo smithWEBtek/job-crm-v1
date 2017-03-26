@@ -92,7 +92,14 @@ coach_name:string coach_email:string coach_phone:string
       learn_student_profile_url
       blog_site_url
       portfolio_site_url
- 
+
+
+==========================================================
+Tag
+name:string 
+has_many :resources
+rails g migration CreateTags name:string
+
 ==========================================
 Resource
 name:string format:string location:string description:text tags:string user_id:integer
@@ -115,19 +122,21 @@ put them on Google docs or Dropbox
 point to them from this app
 
 ==========================================================
-Tag
-name:string 
-has_many :resources
-rails g migration CreateTags name:string
+Doc
+rails g migration file_name:string location:string resource_id:integer
 
+Pdf
+rails g migration file_name:string location:string resource_id:integer
 
-==========================
-OmniAuth    setup Github, Google, Facebook, Twitter
-==========================
- 
-    
+Scrape
+rails g migration file_name:string location:string resource_id:integer
+
 ===========================================================
-Tools
+ 
+OmniAuth    setup Github, Google, Facebook, Twitter
+===========================================================
+ 
+   Tools
             generate emails based on actions past & future
             use github API to get weekly commits
             generate action plans to output to excel

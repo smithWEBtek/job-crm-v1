@@ -1,4 +1,5 @@
 class Doc < ApplicationRecord
+  belongs_to :resource
 # this code is cobbled together from the Pdf model, needs rework and validation for Word docs
   # def open_doc
   #   File.open(".lib/assets/resources/docs/resume.pdf", "rb") do |io|

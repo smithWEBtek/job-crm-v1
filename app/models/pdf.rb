@@ -2,7 +2,8 @@ require 'pdf/reader'
 require 'open-uri'
 
 class Pdf < ApplicationRecord
- 
+  belongs_to :resource
+
   # def self.read_pdf
   #   file = File.open(self, "rb")
   #   PDF::Reader.open(self) do |reader|

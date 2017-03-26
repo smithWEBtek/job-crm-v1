@@ -47,8 +47,9 @@ ActiveRecord::Schema.define(version: 20170326184515) do
   create_table "docs", force: :cascade do |t|
     t.string   "file_name"
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "resource_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -75,8 +76,9 @@ ActiveRecord::Schema.define(version: 20170326184515) do
   create_table "pdfs", force: :cascade do |t|
     t.string   "file_name"
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "resource_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "resources", force: :cascade do |t|
@@ -92,8 +94,9 @@ ActiveRecord::Schema.define(version: 20170326184515) do
   create_table "scrapes", force: :cascade do |t|
     t.string   "file_name"
     t.string   "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "resource_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "steps", force: :cascade do |t|

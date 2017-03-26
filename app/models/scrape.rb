@@ -1,4 +1,6 @@
 class Scrape < ApplicationRecord
+    belongs_to :resource
+
 #   def self.new_orgs(url_scrape = 'https://clutch.co/developers/ruby-rails')
 #     page = HTTParty.get(url_scrape)
 #     @parse_page = Nokogiri::HTML(page)
