@@ -1,0 +1,12 @@
+<h1>Actions</h1>
+
+<% @actions.each do |action| %>
+  <%= action.step.name %> |
+  <%= action.job.title %> |
+  <%= action.org.name %> |
+  <%= action.due_date %> |
+  <%= action.notes %> |
+  <%= action.status %> |
+  <%= action.next_step %> |
+  <%= action.first_contact %><br>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Resources</h1>
+
+<% @resources.each do |resource| %>
+  <%= resource.name %> |
+  <%= resource.format %> |
+  <%= resource.location %> |
+  <%= resource.description %> |
+  <%= resource.user.email %><br>
+<% end %>

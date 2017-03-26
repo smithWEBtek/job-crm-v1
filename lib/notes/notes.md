@@ -5,11 +5,16 @@
 db
 [x] move migrations
 [x] install Devise views
-[]  adapt seed file to updated models/tables
-[]    rearrange Steps as: 
-[]       (1)techprep 
-[]       (2)branding
-[]       (3)jobsearch
+[x]  adapt seed file to updated models/tables
+[x]    rearrange Steps as: 
+[x]       (1)techprep 
+[x]       (2)branding
+[x]       (3)jobsearch
+
+[] put up basic index views
+[] put up application layout nav links
+
+
 []  update README with installation steps and seed file instructions
 []  document intended business logic
 [] setup ERD, installation, app documention in a view

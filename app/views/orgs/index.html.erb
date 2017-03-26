@@ -1,0 +1,9 @@
+<h1>Organizations</h1>
+
+<% @orgs.each do |org| %>
+  <%= org.name %> |
+  <%= org.city %> |
+  <%= org.state %> |
+  <%= org.url %> |
+  <%= org.about %><br>
+<% end %>

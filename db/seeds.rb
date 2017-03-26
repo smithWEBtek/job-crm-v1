@@ -192,13 +192,13 @@ DATA_actions = {
     ["user_id", "step_id", "job_id", "contact_id", "org_id", "due_date", "notes", "status", "next_step", "first_contact"],
   :actions => [
     [1, 1, 1, 1, 1, "2017-04-30", "get on it man!", "active", "meeting", "true"],
-    [1, 1, 1, 1, 1, "2017-03-26", "had a good phone interview", "active", "fup", "false"],
-    [1, 1, 1, 1, 1, "2017-04-15", "looking for PHP Guru", "active", "email", "true"],
-    [1, 1, 1, 1, 1, "2017-04-12", "great Rails shop, jrs welcome", "active", "fup", "false"],
-    [1, 1, 1, 1, 1, "2017-03-30", "get on it man!", "active", "call", "true"],
+    [1, 1, 2, 1, 1, "2017-03-26", "had a good phone interview", "active", "fup", "false"],
+    [1, 1, 3, 1, 1, "2017-04-15", "looking for PHP Guru", "active", "email", "true"],
+    [1, 1, 4, 1, 1, "2017-04-12", "great Rails shop, jrs welcome", "active", "fup", "false"],
+    [1, 1, 5, 1, 1, "2017-03-30", "get on it man!", "active", "call", "true"],
     [1, 1, 1, 1, 1, "2017-05-30", "no data on this yet", "active", "send resume", "false"],
-    [1, 1, 1, 1, 1, "2017-04-03", "need to find HR contact", "active", "wait for response 1 week", "false"],
-    [1, 1, 1, 1, 1, "2017-03-28", "my friend knows a guy here", "active", "drop this one", "true"]
+    [1, 1, 2, 1, 1, "2017-04-03", "need to find HR contact", "active", "wait for response 1 week", "false"],
+    [1, 1, 3, 1, 1, "2017-03-28", "my friend knows a guy here", "active", "drop this one", "true"]
   ]
 }
 
