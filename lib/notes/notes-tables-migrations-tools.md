@@ -7,7 +7,7 @@ has_many :jobs
 rails g migration CreateOrgs name:string city:string state:string url:string about:text
 ==========================
 Contact
-org_id first_name last_name title email phone url about history
+org_id fname lname title email phone url about history
 belongs_to :org
 has_many :actions
 accepts_nested_attributes_for :org
@@ -25,18 +25,19 @@ notes: - all contacts have an Org, default is: name: "network", id: 1
             4. General address book all in one place
 ==========================
 Action
-step_id job_id contact_id org_id due_date notes status next_step first_contact
+user_id step_id job_id contact_id org_id due_date notes status next_step first_contact
 
+belongs_to :user
 belongs_to :contact
 belongs_to :job
 belongs_to :org
 belongs_to :step
 
-rails g migration CreateActions step_id:integer job_id:integer contact_id:integer org_id:integer due_date:date notes:text status:string next_step:string first_contact:boolean
+rails g migration CreateActions user_id:integer step_id:integer job_id:integer contact_id:integer org_id:integer due_date:date notes:text status:string next_step:string first_contact:boolean
  
 note: default step_id: 1 "choose_step!"
 ============================
-Steps
+Step
 name category
 has_many :actions
 rails g migration CreateSteps name:string category:string
@@ -53,11 +54,11 @@ jobsearch
 
 techprep
 9  study
-10  code
+10 code
 11 blog
 12 network
 
-branding (these fields are in Users table)
+branding (todo: an action to complete each of these fields in Users table)
 13  todo_elevator_pitch.txt
 14  todo_resume.doc
 15  todo_twitter_url
@@ -94,8 +95,11 @@ coach_name:string coach_email:string coach_phone:string
  
 ==========================================
 Resource
-name:string format:string location:string user_id:integer description:text tags:string
+name:string format:string location:string description:text tags:string user_id:integer
+
+
 belongs_to :user
+has_many :tags
 
 rails g migration CreateResources name:string format:string location:string user_id:integer description:text tags:string
 
