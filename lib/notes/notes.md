@@ -1,26 +1,14 @@
 
-moved gems, bundle, .env, notes, ERD tool
-verify heroku still works
+[x] move gems, bundle, .env, notes, ERD tool
+[x] verify heroku still works
 
 db
-  move migrations
-  move seed file
-    rearrange Steps as: 
-      (1)techprep 
-      (2)branding
-      (3)jobsearch
-
-Resource access control, initially via user_id
-Future: use Pundit for authorizing access to resources
-
-  
-
-
-
-
-
-
-
+[x]   move migrations
+[]    tweak seed file
+[]    rearrange Steps as: 
+[]       (1)techprep 
+[]       (2)branding
+[]       (3)jobsearch
 
 
 
@@ -37,5 +25,8 @@ get OmniAuth working with Github
 github API to show commits
 
 nested forms to show actions for user
+
+Resource access control, initially via user_id
+Future: use Pundit for authorizing access to resources
 
 back to ajax videos to use in the actions nested resource form
