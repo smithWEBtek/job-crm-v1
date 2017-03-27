@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>FirstContact?</th>
+      <th>Step</th>         
+      <th>Date</th>
+      <th>Status </th>
+      <th>Notes</th>
+      <th>NextStep</th>            
+    </tr>
+  </thead>
+  <tbody>
+    <% jobsearch_actions.each do |action| %>
+    <tr>
+      <td><%= action.first_contact %></td>
+      <td><%= action.step.name %></td>
+      <td><%= action.due_date %></td>
+      <td><%= action.status %></td>
+      <td><%= action.notes %></td>
+      <td><%= action.next_step %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h3>Contact</h3></div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Organization</th>
+            <th>Title </th>
+            <th>Email </th>
+            <th>Phone </th>
+            <th>URL </th>
+            <th>About </th>
+            <th>History</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @contact.id %></td>
+            <td><%= @contact.fname %> <%= @contact.lname %></td>
+            <td><%= @contact.org.name %></td>
+            <td><%= @contact.title %></td>
+            <td><%= @contact.email %></td>
+            <td><%= @contact.phone %></td>
+            <td><%= @contact.url %></td>
+            <td><%= @contact.about %></td>
+            <td><%= @contact.history %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div><h3>JobSearchActions</h3>
+      <% if !@jobsearch_actions.nil? %>
+      <%= render partial: 'contacts/actions', locals: { jobsearch_actions: @jobsearch_actions } %>  
+      <% else %>
+      <p>There are no jobsearch actions scheduled for this contact.</p>
+    <% end %>
+    </div>
+  </div>
+</div>

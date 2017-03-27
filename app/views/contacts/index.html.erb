@@ -1,12 +1,46 @@
-<h1>Contacts</h1>
-
-<% @contacts.each do |contact| %>
-  <%= contact.fname %> <%= contact.lname %> |
-  <%= contact.org.name %> |
-  <%= contact.title %> |
-  <%= contact.email %> |
-  <%= contact.phone %>
-  <%= contact.url %> |
-  <%= contact.about %> |
-  <%= contact.history %><br>
-<% end %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h1>Contacts</h1></div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Organization</th>
+            <th>Title </th>
+            <th>Email </th>
+            <th>Phone </th>
+            <th>URL </th>
+            <th>About </th>
+            <th>History</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @contacts.each do |contact| %>
+          <tr>
+            <td><%= contact.id %>
+            <td><%= contact.fname %> <%= contact.lname %></td>
+            <td><%= contact.org.name %></td>
+            <td><%= contact.title %></td>
+            <td><%= contact.email %></td>
+            <td><%= contact.phone %></td>
+            <td><%= contact.url %></td>
+            <td><%= contact.about %></td>
+            <td><%= contact.history %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <nav>
+      <ul class="pagination">
+        <li><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+        <li><a>1</a></li>
+        <li><a>2</a></li>
+        <li><a aria-label="Next"><span aria-hidden="true">»</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
