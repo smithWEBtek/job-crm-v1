@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
   end
 
   def show
+    @jobsearch_actions = @contact.actions
   end
 
   def new
