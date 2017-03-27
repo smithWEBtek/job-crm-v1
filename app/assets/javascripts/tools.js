@@ -17,7 +17,7 @@
 //     C. the Browser (jQery) will execute the JS response.
 
 // 2. The ability to submit a new comment via AJAX
-
+ 
 
 // examples for response of HTML
 
