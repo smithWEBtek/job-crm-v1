@@ -1,7 +1,7 @@
 class CreateContacts < ActiveRecord::Migration[5.0]
   def change
     create_table :contacts do |t|
-      t.integer :org_id
+      t.integer :company_id, default: 1
       t.string :fname
       t.string :lname
       t.string :title
@@ -9,7 +9,6 @@ class CreateContacts < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :url
       t.text :about
-      t.text :history
 
       t.timestamps
     end

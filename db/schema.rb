@@ -10,28 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326212508) do
+ActiveRecord::Schema.define(version: 20170328034355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "action_logs", force: :cascade do |t|
+    t.integer  "action_id"
+    t.date     "log_date"
+    t.string   "step"
+    t.text     "notes"
+    t.string   "status"
+    t.string   "next_step"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "actions", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "step_id"
-    t.integer  "job_id"
-    t.integer  "contact_id"
-    t.integer  "org_id"
-    t.date     "due_date"
+    t.integer  "step_id",       default: 1
+    t.integer  "job_id",        default: 1
+    t.integer  "contact_id",    default: 1
+    t.integer  "company_id",    default: 1
+    t.date     "date"
     t.text     "notes"
     t.string   "status"
     t.string   "next_step"
     t.boolean  "first_contact"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "url"
+    t.text     "about"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.integer  "org_id"
+    t.integer  "company_id", default: 1
     t.string   "fname"
     t.string   "lname"
     t.string   "title"
@@ -39,9 +60,8 @@ ActiveRecord::Schema.define(version: 20170326212508) do
     t.string   "phone"
     t.string   "url"
     t.text     "about"
-    t.text     "history"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "docs", force: :cascade do |t|
@@ -55,22 +75,12 @@ ActiveRecord::Schema.define(version: 20170326212508) do
   create_table "jobs", force: :cascade do |t|
     t.string   "title"
     t.string   "url"
-    t.integer  "org_id"
+    t.integer  "company_id"
     t.text     "description"
     t.text     "requirements"
     t.text     "instructions"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "orgs", force: :cascade do |t|
-    t.string   "name"
-    t.string   "city"
-    t.string   "state"
-    t.string   "url"
-    t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "pdfs", force: :cascade do |t|
@@ -108,6 +118,14 @@ ActiveRecord::Schema.define(version: 20170326212508) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_logs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "log_date"
+    t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

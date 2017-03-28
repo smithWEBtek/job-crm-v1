@@ -1,21 +1,26 @@
 Database tables, columns, AR relationships and migrations
 ========================================================
-Org
+Company
+
 name city state url about
+
 has_many :contacts
 has_many :jobs
-rails g migration CreateOrgs name:string city:string state:string url:string about:text
+
+rails g migration CreateCompanies name:string city:string state:string url:string about:text
 ==========================
 Contact
-org_id fname lname title email phone url about history
+
+company_id fname lname title email phone url about history
+
 belongs_to :org
 has_many :actions
 accepts_nested_attributes_for :org
 
-rails g migration CreateContacts org_id:integer fname:string lname:string role:string about:text email:string phone:string url:string history:text
+rails g migration CreateContacts company_id:integer fname:string lname:string role:string about:text email:string phone:string url:string
 
-notes: - all contacts have an Org, default is: name: "network", id: 1
-       - switch to another Org, if a network contact becomes a job connected contact
+notes: - all contacts have an Company, default is: name: "network", id: 1
+       - switch to another Company, if a network contact becomes a job connected contact
        - store social links, blogs, sites in about column
        - or use 'url' column if appropriate ex: stand alone developer, solo w/no company, but does have their own URL for consulting, etc. 
        - this allows the Contact table to serve: 
@@ -25,114 +30,159 @@ notes: - all contacts have an Org, default is: name: "network", id: 1
             4. General address book all in one place
 ==========================
 Action
-user_id step_id job_id contact_id org_id due_date notes status next_step first_contact
 
-belongs_to :user
-belongs_to :contact
-belongs_to :job
-belongs_to :org
-belongs_to :step
+user_id step_id job_id contact_id company_id due_date notes status next_step first_contact
 
-rails g migration CreateActions user_id:integer step_id:integer job_id:integer contact_id:integer org_id:integer due_date:date notes:text status:string next_step:string first_contact:boolean
+  belongs_to :contact
+  belongs_to :job
+  belongs_to :org
+  belongs_to :step
+  belongs_to :user
+  has_many :action_logs
+
+rails g migration CreateActions user_id:integer step_id:integer job_id:integer contact_id:integer company_id:integer due_date:date notes:text status:string next_step:string first_contact:boolean
  
 note: default step_id: 1 "choose_step!"
 ============================
 Step
+
 name category
 has_many :actions
+
 rails g migration CreateSteps name:string category:string
-category (jobsearch, techprep, branding)
-jobsearch
-1  choose_step!
-2  research
-3  apply
-4  email
-5  call
-6  meeting
-7  interview
-8  fup
 
-techprep
-9  study
-10 code
-11 blog
-12 network
+NOTES: 
+      categories are: jobsearch, techprep, branding
 
-branding (todo: an action to complete each of these fields in Users table)
-13  todo_elevator_pitch.txt
-14  todo_resume.doc
-15  todo_twitter_url
-16  todo_linkedin_url
-17  todo_github_url
-18  todo_learn_student_profile_url
-19  todo_blog_site_url
-20  todo_portfolio_site_url
-21  todo_github commits track with github API
-22  todo_new # add todo, from curriculum
+      jobsearch
+      1  choose_step!
+      2  research
+      3  apply
+      4  email
+      5  call
+      6  meeting
+      7  interview
+      8  fup
+
+      techprep
+      9  study
+      10 code
+      11 blog
+      12 network
+
+      branding (todo: an action to complete each of these fields in Users table)
+      13  todo_elevator_pitch.txt
+      14  todo_resume.doc
+      15  todo_twitter_url
+      16  todo_linkedin_url
+      17  todo_github_url
+      18  todo_learn_student_profile_url
+      19  todo_blog_site_url
+      20  todo_portfolio_site_url
+      21  todo_github commits track with github API
+      22  todo_new # add todo, from curriculum
 
 ==========================
 Job
-title  url org_id description requirements instructions
+
+title  url company_id description requirements instructions
+
 belongs_to :org
 has_many :actions
 has_many :contacts # this will allow us to call "job.contacts", for related contacts
 
-rails g migration CreateJobs title:string url:string org_id:integer description:text requirements:text  instructions:text 
+rails g migration CreateJobs title:string url:string company_id:integer description:text requirements:text  instructions:text 
 
 ==========================
 Users
+
 name:string email:string phone:string address:string city:string state:string zip:string
-coach_name:string coach_email:string coach_phone:string
 
-      elevator_pitch:text
-      resume:object
-      twitter_url
-      linkedin_url
-      github_url
-      learn_student_profile_url
-      blog_site_url
-      portfolio_site_url
-
+coach_name:string coach_email:string coach_phone:string, elevator_pitch:text, resume:object, twitter_url, linkedin_url, github_url, learn_student_profile_url, blog_site_url, portfolio_site_url
 
 ==========================================================
 Tag
+
 name:string 
+
 has_many :resources
+
 rails g migration CreateTags name:string
 
 ==========================================
 Resource
-name:string format:string location:string description:text tags:string user_id:integer
 
+name:string format:string location:string description:text tags:string user_id:integer
 
 belongs_to :user
 has_many :tags
 
 rails g migration CreateResources name:string format:string location:string user_id:integer description:text tags:string
 
-Doc    Pdf    Audio       Video       Wiki
-NOTE:
- # default landing place: root of resources folder
- # create a cleanup method, to move files of type(), to respective folders audio, video, docs
-resource.ext = doc_name.reverse[0..2].reverse
-route files of type 'ext' to appropriate folders
+NOTES: 
+      Doc    Pdf    Audio       Video       Wiki
+      NOTE:
+       # default landing place: root of resources folder
+       # create a cleanup method, to move files of type(), to respective folders audio, video, docs
+      resource.ext = doc_name.reverse[0..2].reverse
+      route files of type 'ext' to appropriate folders
 
-docs and files can't be too big
-put them on Google docs or Dropbox
-point to them from this app
+      docs and files can't be too big
+      put them on Google docs or Dropbox
+      point to them from this app
 
 ==========================================================
 Doc
-rails g migration file_name:string location:string resource_id:integer
 
+file_name:text location:text resource_id:integer
+
+belongs_to :resource
+
+rails g migration file_name:string location:string resource_id:integer
+==========================================================
 Pdf
-rails g migration file_name:string location:string resource_id:integer
 
+file_name:text location:text resource_id:integer
+
+belongs_to :resource
+
+rails g migration file_name:string location:string resource_id:integer
+==========================================================
 Scrape
+
+file_name:text location:text resource_id:integer
+
+belongs_to :resource
+
 rails g migration file_name:string location:string resource_id:integer
 
 ===========================================================
- 
+ActionLog
+
+rails g migration CreateActionLogs action_id:integer log_date:date step:string notes:text status:string next_step:string 
+
+belongs_to :action
+
+NOTE:
+   These fields are a snapshot in a moment of time, in the life cycle of an action. 
+      @action.id
+      @action.updated_at
+      @action.step.name
+      @action.notes
+      @action.status
+      @action.next_step
+===========================================================
+UserLog
+
+rails g migration CreateUserLogs user_id:integer log_date:date notes:text
+
+belongs_to :user
+has_many :tags
+
+===========================================================
+
+
+
 OmniAuth    setup Github, Google, Facebook, Twitter
 ===========================================================
  

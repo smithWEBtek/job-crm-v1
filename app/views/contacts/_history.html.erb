@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Status</th>  
+      <th>Date</th>
+      <th>Notes</th>
+      <th>NextStep</th>            
+    </tr>
+  </thead>
+  <tbody>
+    <% histories.each do |history| %>
+    <tr>
+      <td><%= history.status %></td>      
+      <td><%= history.due_date %></td>
+      <td><%= history.notes %></td>
+      <td><%= history.next_step %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
