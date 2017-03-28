@@ -94,9 +94,18 @@ has_many :contacts # this will allow us to call "job.contacts", for related cont
 rails g migration CreateJobs title:string url:string company_id:integer description:text requirements:text  instructions:text 
 
 ==========================
-Users
+User
 
 name:string email:string phone:string address:string city:string state:string zip:string
+
+  has_many :actions
+  has_many :jobs, through: :actions
+  has_many :contacts, through: :actions
+  has_many :companies, through: :actions
+  has_many :steps, through: :actions
+  has_many :resources
+  has_many :user_logs
+
 
 coach_name:string coach_email:string coach_phone:string, elevator_pitch:text, resume:object, twitter_url, linkedin_url, github_url, learn_student_profile_url, blog_site_url, portfolio_site_url
 
