@@ -22,7 +22,6 @@ class Action < ApplicationRecord
   # end
 
   def log
-    # binding.pry
     action = Action.find_by_id(self.id)
         # change to current_user.actions.build
         # when current_user method is working
