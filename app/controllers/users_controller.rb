@@ -28,8 +28,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user
-    @log = @user.logs.build
+    @user = User.find_by_id(params[:id])
+    @user_log = UserLog.new
   end
 
   def update

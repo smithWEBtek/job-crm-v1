@@ -1,0 +1,13 @@
+<table>
+  <th>
+    <tr>User</tr>
+    <tr>Date</tr>
+    <tr>Note</tr>
+  </th>
+  <% @logs.each do |log| %>
+    <tr>
+      <td><%= log.date %></td>
+      <td><%= log.note %></td>
+  </tr>
+  <% end %>
+</table>

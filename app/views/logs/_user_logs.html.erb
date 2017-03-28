@@ -1,0 +1,20 @@
+<table>
+  <th>
+    <tr>User</tr>
+    <tr>Date</tr>
+    <tr>Step</tr>
+    <tr>Notes</tr>
+    <tr>Status</tr>
+    <tr>NextStep</tr>
+  </th>
+  <% @logs.each do |log| %>
+    <tr>
+      <td><%= log.action.user.email %></td>
+      <td><%= log.date %></td>
+      <td><%= log.step %></td>
+      <td><%= log.notes %></td>
+      <td><%= log.status %></td>
+      <td><%= log.next_step %></td>
+  </tr>
+  <% end %>
+</table>

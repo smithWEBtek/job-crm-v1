@@ -1,0 +1,7 @@
+<h1>New User Log</h1>
+
+<%= form_for(@user_log, method: 'post', url: user_logs_path) do |f| %>
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+  <%= f.submit %>
+<% end %>
