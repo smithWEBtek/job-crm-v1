@@ -2,7 +2,8 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   
   def index
-    @contacts = Contact.all
+    @contacts = current_user.contacts
+    # @contacts = Contact.all
     # render json: @contacts
   end
 

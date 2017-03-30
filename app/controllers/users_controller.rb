@@ -9,14 +9,12 @@ class UsersController < ApplicationController
   end
 
   def show
-  # raise params.inspect
-    @actions = @user.actions
-    # @user = current_user unless current_user.admin?
+    @actions = current_user.actions
+    @user = current_user
   end
 
   def new
     @user = User.new
-    # authorize_admin
   end
 
   def create
