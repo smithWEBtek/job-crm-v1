@@ -7,13 +7,13 @@
 }
 
 .index_view {
-  font-weight: bold;
+  font-weight: normal;
   background: LightGray;
 }
 
 .nav_bar {
   font-weight: bold;
-  background: LightBlue;
+  background: maroon;
   &:hover {
     background: DarkCyan;
   }
@@ -21,7 +21,7 @@
 
 .registration_bar {
   font-weight: normal;
-  background: LightBlue;
+  background: Wine;
   &:hover {
     background: DarkCyan;
   }

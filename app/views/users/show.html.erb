@@ -2,5 +2,8 @@
 
 <%= render partial: 'actions/actions', locals: { actions: @actions } %>
 
-<h4><%= link_to "Show User Contacts", contacts_path %></h4>
+<h4 id="load-user-contacts"><%= link_to "Show User Contacts", contacts_path %></h4>
+<div id="user-contacts"></div>
 
+<h4 id="load-user-actions"><%= link_to "Show User Actions", user_actions_path(@user) %></h4>
+<div id="user-actions"></div>
