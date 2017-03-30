@@ -2,10 +2,10 @@ class ActionsController < ApplicationController
   before_action :set_action, only: [:show, :edit, :update, :destroy]
   
   def index
-    @actions = Action.all
+    @actions = Action.all.where(user_id: params[:user_id])
     # render json: @actions
   end
-
+   
   def show
   end
 

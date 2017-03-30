@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   end
 
   def show
+  # raise params.inspect
+    @actions = @user.actions
     # @user = current_user unless current_user.admin?
   end
 
