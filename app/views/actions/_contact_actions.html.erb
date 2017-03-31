@@ -1,0 +1,16 @@
+<div>
+<table>
+  <th>
+    <tr>
+      <td>STEP</td>
+      <td>NOTES</td>
+    </tr>
+  </th>
+  <% actions.each do |action| %>
+  <tr>
+    <td><%= action.step.name %></td>
+    <td><%= action.notes %></td>
+  </tr>
+</table>
+  <% end %>
+</div>

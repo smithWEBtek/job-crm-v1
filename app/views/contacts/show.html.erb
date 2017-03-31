@@ -32,7 +32,7 @@
     </div>
     <div><h4>JobSearchActions</h4>
       <% if !@jobsearch_actions.nil? %>
-      <%= render partial: 'contacts/actions', locals: { jobsearch_actions: @jobsearch_actions } %>  
+      <%= render partial: 'contacts/actions', locals: { actions: @contact_actions } %>  
       <% else %>
       <p>There are no jobsearch actions scheduled for this contact.</p>
     <% end %>
