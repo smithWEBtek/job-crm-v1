@@ -12,8 +12,9 @@ Rails.application.routes.draw do
   # post '/users/sign_up', to: 'users#create'
 
 
-  get 'user_logs', to: 'logs#user_logs'
-  get 'action_logs', to: 'logs#action_logs'
+  get '/user_logs', to: 'logs#user_logs'
+  get '/action_logs', to: 'logs#action_logs'
+  get '/admin_actions', to: 'actions#admin'
 
   resources :steps, :tags, :resources
 

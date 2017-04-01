@@ -1,13 +1,16 @@
 <h3>user: <%= @user.email %></h3>
 
-<h4><%= link_to "Show User Actions", user_actions_path(@user), class: "load-user-actions" %></h4>
+<h4><%= link_to "Show User Actions", user_actions_path(@user), class: "load-user-actions", remote: true %></h4>
 
-  <%= render partial: 'actions/user_actions', locals: { actions: @user_actions } %>
+  <%#= render partial: 'actions/user_actions', locals: { actions: @user_actions } %>
 
-<div id="user-actions-new"></div>
+<div id="user-actions-new">
+  <ol></ol>
+</div>
 <div class="actions-form">
-<form>
+<form method="post", action="/users/:id/actions">
   <textarea></textarea><br>
   <input type="submit">
 </form>
 </div>
+

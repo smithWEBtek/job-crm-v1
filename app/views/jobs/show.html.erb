@@ -1,0 +1,11 @@
+<h1>Jobs#show</h1>
+  <%= @job.title %><br>
+  <%= @job.company.name %><br>
+  <%= @job.url %><br>
+  <%= @job.description %><br>
+  <%= @job.requirements %><br>
+  <%= @job.instructions %><br>
+  <hr>
+<h3>Current actions for this job: </h3>
+
+<%= render partial: 'actions/job_actions', locals: { actions: @job_actions } %>

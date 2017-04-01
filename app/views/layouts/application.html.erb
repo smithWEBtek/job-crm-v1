@@ -14,51 +14,18 @@
     <%= javascript_include_tag 'tools' %>
  
   </head>
-
   <body>
-    <div class="registration_bar" style="margin: 3%">
-      <% if !current_user %>
-      <%= link_to "Home", home_path %>
-      |
-      <%= link_to "Sign Up", new_user_registration_path %>
-      |
-      <%= link_to "Sign In",  new_user_session_path %><br>
-      <% end %>
-
-      <% if current_user && user_signed_in? %>
-      <%= link_to "Home", root_path %>
-      |
-      <%= link_to "Sign Out", destroy_user_session_path %>
-      |
-      <%= link_to "Account", user_path(current_user) %>
-      |
-      <%= link_to "Companies", companies_path %>
-      |
-      <%= link_to "Contacts", contacts_path %>
-      |
-      <%= link_to "Jobs", jobs_path %>
-      |
-      <%= link_to "Actions", user_actions_path(1) %>
-      |
-      <%= link_to "Resources", resources_path %>
-      |
-      <%= link_to "Tags", tags_path %>
-      |
-      <%= link_to "Users", users_path %><br>
-
-      Time:
-      <%= Time.zone.now %>
-
+    <!-- <div class="navbar-user" style="margin: 3%"> -->
+      <%= render partial: 'layouts/navbar_user' %>
+    </div>
+    <!-- <div class="navbar-admin" style="margin: 3%"> -->
+      <%= render partial: 'layouts/navbar_admin' %>
+    </div>
     <div class="flash_style">
-      <%= current_user.email.upcase %>
-      <% end %>
+      <p class="notice alert"><%= notice %><%= alert %></p>
     </div>
-
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
-    <div class="index_view" style="margin: 3%">
-
+    
+    <div style="margin: 3%">
       <%= yield %>
     </div>
 

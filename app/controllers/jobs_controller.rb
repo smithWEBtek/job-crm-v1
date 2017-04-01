@@ -7,6 +7,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @job_actions = Action.all.where(job_id: params[:job_id])    
   end
 
   def new

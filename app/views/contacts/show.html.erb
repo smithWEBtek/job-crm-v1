@@ -30,12 +30,9 @@
         </tbody>
       </table>
     </div>
-    <div><h4>JobSearchActions</h4>
-      <% if !@jobsearch_actions.nil? %>
-      <%= render partial: 'contacts/actions', locals: { actions: @contact_actions } %>  
-      <% else %>
-      <p>There are no jobsearch actions scheduled for this contact.</p>
-    <% end %>
+    <div>
+      <h3>Current actions for this contact: </h3>
+      <%= render partial: 'actions/contact_actions', locals: { actions: @contact_actions } %>  
     </div>
   </div>
 </div>

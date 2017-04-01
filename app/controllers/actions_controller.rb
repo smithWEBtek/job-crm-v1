@@ -1,13 +1,30 @@
 class ActionsController < ApplicationController
   before_action :set_action, only: [:show, :edit, :update, :destroy]
   
+  def admin
+    @actions = Action.all # constrain this to admin only eventually
+    render :admin
+  end
+
   def index
     @company_actions = Action.all.where(company_id: params[:company_id])
     @contact_actions = Action.all.where(contact_id: params[:contact_id])
     @job_actions = Action.all.where(job_id: params[:job_id])    
     @user_actions = Action.all.where(user_id: params[:user_id])
-    @admin_actions = Action.all
-    # render json: @actions
+    @actions = Action.all
+
+    # render 'actions/index', layout: false
+    # render :index, layout: false
+    render layout: false
+
+    # render json: @user_actions
+
+    # render 'actions/actions', locals: { actions: @user_actions }, layout: false
+    # render 'actions/user_actions', locals: { actions: @user_actions }, layout: false
+    # render json: { partial: 'actions/user_actions', locals: { actions: @user_actions }, layout: false }
+    # render { partial: 'actions/user_actions', locals: { actions: @user_actions }, layout: false }
+    # render 'actions/user_actions', locals: { actions: @user_actions }
+    # render partial: 'actions/user_actions', layout: false  
   end
    
   def show

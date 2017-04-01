@@ -1,0 +1,11 @@
+<!-- <%# if current_user.admin? %>  --constrain to only admin eventually-->
+<div class="admin">
+  ADMIN: 
+  <button><%= link_to "Users", users_path %></button>
+  <button><%= link_to "Actions", admin_actions_path %></button>
+  <button><%= link_to "Companies", companies_path %></button>
+  <button><%= link_to "Contacts", contacts_path %></button>
+  <button><%= link_to "Jobs", jobs_path %></button>
+  <button><%= link_to "Resources", resources_path %></button>
+  <button><%= link_to "Tags", tags_path %><br></button>
+</div>

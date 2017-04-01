@@ -20,7 +20,7 @@
           <% @contacts.each do |contact| %>
           <tr>
             <td><%= contact.id %>
-            <td><%= contact.fname %> <%= contact.lname %></td>
+            <td><%= link_to contact.fname.concat(contact.lname), contact_path(contact) %></td>
             <td><%= contact.company.name %></td>
             <td><%= contact.title %></td>
             <td><%= contact.email %></td>

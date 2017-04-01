@@ -8,7 +8,8 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @jobsearch_actions = @contact.actions
+    binding.pry
+    @contact_actions = Action.all.where(contact_id: params[:contact_id])
   end
 
   def new
