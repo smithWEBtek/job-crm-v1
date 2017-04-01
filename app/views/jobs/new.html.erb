@@ -1,0 +1,21 @@
+<%= form_for @job do |f| %> 
+  <%= f.label :company %>  must exist in the drop down list, or: <%= link_to 'create new company', new_company_path %><br>
+  <%= f.collection_select :company_id, Company.all, :id, :name %><br>
+  
+  <%= f.label :title %><br>
+  <%= f.text_field :title %><br>
+  
+  <%= f.label :url %><br>
+  <%= f.text_field :url %><br>
+
+  <%= f.label :description %><br>
+  <%= f.text_area :description %><br>
+  
+  <%= f.label :requirements %><br>
+  <%= f.text_area :requirements %><br>
+  
+  <%= f.label :instructions %><br>
+  <%= f.text_area:instructions %><br>
+    
+  <%= f.submit %> 
+<% end %> 

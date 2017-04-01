@@ -1,3 +1,53 @@
+170401
+job flow
+
+action    can be linked to job, contact or company, or not, update anytime
+  new     shows all action fields
+         
+  show    shows list of all actions, in tabular data format, with edit/delete links
+  edit    shows all action fields, with drop
+          shows drop-downs for existing jobs, contacts, companies
+          associate any combination of these 3 anytime
+          1 action, can have all 3 associations
+          if action applies to more than 1 job, contact or company, 
+            create a new action for it
+            
+contact   can be linked to action, job or company, or not, update anytime
+company   can be linked to action, job, contact, or not, update anytime
+
+job       must be linked to an EXISTING company
+          company must exist: if not exist, create company, then create job
+
+user creates new job at:  /jobs/new
+  job stats
+
+jobs/:id shows:
+  all the job fields
+
+  all contacts with same company_id
+    link to add a contact, using job.company.build
+    or add contact generically, without association to company, can update anytime
+
+  all actions with same company_id
+    link to add an action, using job.company.build
+    or add action generically, without association to company, can update anytime
+
+contacts/:id
+  all the contact fields
+
+contacts/:id/edit
+  drop downs to link contact with:
+    existing company
+    existing job
+    existing action
+
+  create new action in generic action form
+    associate action to contact if desired, or not, can update anytime
+
+
+
+
+
 170327
 --------------
 [] decide how and when to trigger an action_log record

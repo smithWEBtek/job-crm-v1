@@ -9,7 +9,7 @@ DATA_companies = {
     ["Ace Hardware", "Tulsa", "OK", "http://www.acehardware.com", "Ace is the place for the helpful hardware mammal."],
     ["JB Hunt", "Chicago", "IL", "http://www.jbhunt.com", "Ship it!"],
     ["Pepsi Co", "Louisville", "KY", "http://www.pepsico.com", "You want Pepsi, not Coke"],
-    ["Org deleted, please choose a new company."]
+    ["deleted-choose-new"]
   ]
 }
 
