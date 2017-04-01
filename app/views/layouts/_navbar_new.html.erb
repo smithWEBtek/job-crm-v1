@@ -1,0 +1,10 @@
+<div class="nav-bar">
+<% if current_user && user_signed_in? %>
+  <button><%= link_to "New Company", new_company_path %></button>
+  <button><%= link_to "New Contact", new_contact_path %></button>
+  <button><%= link_to "New Job", new_job_path %></button>
+  <button><%= link_to "New Resource", new_resource_path %></button>
+  <button><%= link_to "New Action", new_user_action_path(current_user) %></button><br>
+Welcome: <%= current_user.email.upcase %>
+<% end %> Current DateTime: <%= Time.new.strftime("%Y-%m-%d %H:%M:%S") %>
+</div>

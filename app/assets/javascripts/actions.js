@@ -38,7 +38,14 @@
 // C. the Browser ( jQuery ) will execute the JS Response in "filename.js.erb"
 
 
+// SUBMITTING a FORM via AJAX
+// A. hijack the submit event of the FORM
+// B. take form data and send to the server as AJAX post request
+//   ---what URL? 
+// C. using data from ajax post request, create a corresponding new "user action" 
+// D. send back hTML/JSON/JS of the new user_action and inject into DOM
 
+// scroll down for code!
 
 
 
@@ -118,3 +125,28 @@
 // 7. use 'j render' to escape the characters in your 'rails generated' html string
 // 8. pass that j rendered html string to a JavaScript function to inject into DOM.
 // 9. User gets data, wicked fast!, page didn't have to reload.
+
+
+
+
+// SUBMITTING a FORM via AJAX (5 ways)
+// A. hijack the submit event of the FORM
+// B. take form data and send to the server as AJAX post request
+//   ---what URL? 
+// C. using data from ajax post request, create a corresponding new "user action" 
+// D. send back hTML/JSON/JS of the new user_action and inject into DOM
+
+// $(function() {
+//   $("div#add-user-action").on("submit", function(e) {
+//     $.ajax({
+//       method: "POST",
+//       url: this.href
+//     }).success(function(response) {
+//       // document.getElementById("user-actions-new").innerHTML = response
+//       $("div#user-actions-new").html(response)
+//     }).error(function(notNeeded) {
+//       alert("we broke!!")
+//     })
+//     e.preventDefault();
+//   })
+// })

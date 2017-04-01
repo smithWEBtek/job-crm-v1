@@ -1,40 +1,31 @@
-<h1>Actions</h1>
-<table>
-  <th>
-    <h4><tr align="left"><strong>
-      <td>company</td>
-      <td>status</td>
-      <td>step</td>
-      <td>date</td>
-      <td>job</td>
-      <td>contact</td>
-      <td>first_contact</td>
-      <td>notes</td>
-      <td>next_step</td>
-    </strong></tr></h4>
-  </th>
-  <% @actions.each do |action| %>
-  <tr>
-  
-    <td><h4><%= link_to action.company.name, company_path(action.company) %></h4></td>
-    <td><%= action.status %></td>
-    <td><%= action.step.name %></td>
-    <td><%= action.date %></td>
-    <td><%= link_to action.job.title, job_path(action.job) %></td>
-    <td><%= action.first_contact %></td>
-    <td><%= action.notes %></td>
-    <td><%= action.next_step %></td>
-  </tr>
-  <tr>contacts at <%= link_to action.company.name, company_path(action.company) %></tr><br>
-    <% action.job.company.contacts.each do |contact| %>
-    <tr><%= link_to contact.fname.concat(contact.lname), contact_path(contact) %></tr><br>
-      <% contact.actions.each do |action| %>
-    </tr>
+<div>
+<h1>User Actions</h1>
+  <table>
+    <th>
+      <h4><tr align="left"><strong>
+        <td>date</td>
+        <td>status</td>
+        <td>job</td>
+        <td>contact</td>
+        <td>company</td>
+        <td>notes</td>
+        <td>step</td>
+        <td>next_step</td>
+        <td>first_contact</td>    
+      </strong></tr></h4>
+    </th>
+    <% @actions.each do |action| %>
     <tr>
-      <td><%= action.date %>: <%= action.notes %> | Next step: <%= action.next_step %></td>
+      <td><%= action.date %></td>
+      <td><%= action.status %></td>
+      <td><%= link_to action.job.title, job_path(action.job) %></td>
+      <td><%= action.first_contact %></td>
+      <td><%= link_to action.company.name, company_path(action.company) %></td>
+      <td><%= action.notes %></td>
+      <td><%= action.step.name %></td>
+      <td><%= action.next_step %></td>
+      <td><%= action.first_contact %></td>
     </tr>
-      <% end %>
-    <% end %>
-  </tr>
-<% end %>
-</table>
+  <% end %>
+  </table>
+</div>

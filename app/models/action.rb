@@ -1,9 +1,9 @@
 class Action < ApplicationRecord
+  belongs_to :user  
   belongs_to :contact
   belongs_to :job
   belongs_to :company
   belongs_to :step
-  belongs_to :user
   has_many :action_logs
 
   #scoped resource:category, based on action step chosen

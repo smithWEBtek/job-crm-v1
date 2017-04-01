@@ -1,16 +1,41 @@
 <h3>user: <%= @user.email %></h3>
 
-<h4><%= link_to "Show User Actions", user_actions_path(@user), class: "load-user-actions", remote: true %></h4>
+<!-- <h4><%#= link_to "Show User Actions", user_actions_path(@user), class: "load-user-actions", remote: true %></h4>
+ -->
+ <h4>Actions rendered via partial: </h4>
+  <%= render partial: 'actions/user_actions', locals: { actions: @user_actions } %>
 
-  <%#= render partial: 'actions/user_actions', locals: { actions: @user_actions } %>
+<!-- <div id="user-actions-new">
+  <ol></ol>–
+</div> -->
 
-<div id="user-actions-new">
-  <ol></ol>
-</div>
-<div class="actions-form">
+<%= user_actions_path(@user) %>
+<%#= form_for([@user, @action]) do |f| %>
+<%= form_for(@action, method: 'post', url: user_actions_path(@user)) do |f| %>
+  
+  <% f.hidden_field :user_id %>
+
+  <%= f.label :company %><br>
+  <%= f.collection_select :company_id, Company.all, :id, :name %><br>
+
+  <%= f.label :notes %><br>
+  <%= f.text_area :notes %><br>
+  <%= f.submit %>
+<% end %>
+
+
+<%#= form_for(@user_log, method: 'post', url: user_logs_path) do |f| %>
+  <%#= f.label :notes %>
+  <%#= f.text_area :notes %>
+  <%#= f.submit %>
+<%# end %>
+
+
+<!-- 
+<div id="add-user-action">
 <form method="post", action="/users/:id/actions">
   <textarea></textarea><br>
   <input type="submit">
 </form>
-</div>
+</div> -->
 

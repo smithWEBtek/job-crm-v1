@@ -7,15 +7,17 @@ class ActionsController < ApplicationController
   end
 
   def index
-    @company_actions = Action.all.where(company_id: params[:company_id])
+    @action_actions = Action.all.where(action_id: params[:action_id])
     @contact_actions = Action.all.where(contact_id: params[:contact_id])
     @job_actions = Action.all.where(job_id: params[:job_id])    
     @user_actions = Action.all.where(user_id: params[:user_id])
-    @actions = Action.all
+    @actions = current_user.actions
+
+    
 
     # render 'actions/index', layout: false
     # render :index, layout: false
-    render layout: false
+    # render layout: false
 
     # render json: @user_actions
 
@@ -31,16 +33,17 @@ class ActionsController < ApplicationController
   end
 
   def new
-    @action = Action.new
+    @user = current_user
+    @action = @user.actions.build
   end
 
   def create
     @action = Action.new(action_params)
     if @action.save
       flash[:message] = 'Action created.'
-      redirect_to action_path(@action)
+      redirect_to user_actions_path(@action.user)
     else
-      render :new
+      redirect_to new_user_action_path(current_user)
     end
   end
 
@@ -68,6 +71,6 @@ class ActionsController < ApplicationController
   end
 
   def action_params
-    params.require(:action).permit(:step_id, :job_id, :contact_id, :org_id, :due_date, :notes, :status, :next_step, :first_contact)
+    params.require(:action).permit(:user_id, :step_id, :job_id, :contact_id, :company_id, :date, :notes, :status, :next_step, :first_contact)
   end
 end

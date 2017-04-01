@@ -18,17 +18,16 @@ Rails.application.routes.draw do
 
   resources :steps, :tags, :resources
 
-
   resources :companies do 
-    resources :actions
+    # resources :actions
   end
 
   resources :jobs do 
-    resources :actions
+    # resources :actions
   end
 
   resources :contacts do 
-    resources :actions
+    # resources :actions
   end
 
   resources :users do 

@@ -1,0 +1,29 @@
+
+<%= form_for @action do |f| %>
+
+  <%= f.label :date %><br>
+  <%= f.date_select :date %><br>
+
+  <%= f.label :status %><br>
+  <%= f.text_field :status %><br>
+
+  <%= f.label :step %><br>
+  <%= f.collection_select :step_id, Step.all, :id, :title %><br>
+
+  <%= f.label :job %><br>
+  <%= f.collection_select :job_id, Job.all, :id, :title %><br>
+
+  <%= f.label :contact %><br>
+  <%= f.collection_select :contact_id, Contact.all, :id, :lname %><br>
+
+  <%= f.label :company %><br>
+  <%= f.collection_select :company_id, Company.all, :id, :name %><br>
+
+  <%= f.label :notes %><br>
+  <%= f.text_area :notes %><br>
+
+  <%= f.label :first_contact %><br>
+  <%= f.text_area :first_contact %><br>
+ 
+  <%= f.submit %>
+<% end %>

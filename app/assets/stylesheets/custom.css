@@ -1,3 +1,16 @@
+table {
+  /*border: 1px solid navy;*/
+  table-layout: flexible;
+  width: 100%;
+  text-align: left;
+}
+
+th {
+  font-weight: bold;
+  overflow: hidden;
+  width: 100px;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
@@ -9,17 +22,9 @@
   background: LightGray;
 }
 
-.nav_bar {
+.nav-bar {
   font-weight: normal;
-  background: LightBlue;
-  &:hover {
-    background: DarkCyan;
-  }
-}
-
-.registration_bar {
-  font-weight: normal;
-  background: LightBlue;
+  background: LightCyan;
   &:hover {
     background: DarkCyan;
   }
@@ -33,7 +38,7 @@
   }
 }
 
-.flash_style {
+.flash-style {
   font-weight: normal;
   color: #cc3300;
   font-style: italic;

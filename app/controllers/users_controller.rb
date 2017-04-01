@@ -9,8 +9,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user_actions = current_user.actions
     @user = current_user
+    @action = @user.actions.build
+    @user_actions = current_user.actions
   end
 
   def new

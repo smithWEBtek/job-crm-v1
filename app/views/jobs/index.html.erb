@@ -1,11 +1,25 @@
-<h1>Jobs</h1>
-
-<% @jobs.each do |job| %>
-  <%= link_to job.title, job_path(job) %> |
-  <%= job.company.name %> |
-  <%= job.url %> |
-  <%= job.description %><br>
-  <%= job.requirements %><br>
-  <%= job.instructions %><br>
-  <hr>
-<% end %>
+<div>
+<h3>User Jobs</h3>
+  <table>
+    <th>
+      <tr><strong>
+        <td>title</td>
+        <td>company</td>
+        <td>job</td>
+        <td>description</td>
+        <td>requirements</td>
+        <td>instructions</td>
+       </strong></tr>
+   </th>
+    <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.title %></td>
+      <td><%= link_to job.company.name, company_path(job.company) %></td>
+      <td><%= link_to job.title, job.url %></td>
+      <td><%= job.description %></td>
+      <td><%= job.requirements %></td>
+      <td><%= job.instructions %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>

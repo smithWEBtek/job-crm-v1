@@ -1,9 +1,23 @@
-<h1>Resources</h1>
-
-<% @resources.each do |resource| %>
-  <%= resource.name %> |
-  <%= resource.format %> |
-  <%= resource.location %> |
-  <%= resource.description %> |
-  <%= resource.user.email %><br>
-<% end %>
+<div>
+<h3>User Resources</h3>
+  <table>
+    <th>
+      <tr>
+        <td>owner</td>
+        <td>resource name</td>
+        <td>format</td>
+        <td>location</td>
+        <td>description</td>
+      </tr>
+    </th>
+    <% @resources.each do |resource| %>
+    <tr>
+      <td><%= resource.user.email %></td>
+      <td><%= resource.name %></td>
+      <td><%= resource.format %></td>
+      <td><%= resource.location %></td>
+      <td><%= resource.description %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
