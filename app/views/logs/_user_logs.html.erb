@@ -9,7 +9,7 @@
   </th>
   <% @logs.each do |log| %>
     <tr>
-      <td><%= log.action.user.email %></td>
+      <td><%= log.todo.user.email %></td>
       <td><%= log.date %></td>
       <td><%= log.step %></td>
       <td><%= log.notes %></td>

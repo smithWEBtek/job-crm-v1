@@ -8,8 +8,7 @@ class ContactsController < ApplicationController
   end
 
   def show
-    binding.pry
-    @contact_actions = Action.all.where(contact_id: params[:contact_id])
+    @contact_todos = Todo.all.where(contact_id: params[:contact_id])
   end
 
   def new

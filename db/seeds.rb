@@ -1,15 +1,15 @@
 DATA_companies = {
   :company_keys =>
-    ["name", "city", "state", "url", "about"],
+    ["name", "city", "state", "url", "about", "first_contact_date"],
   :companies => [
-    ["Network", "hometown", "homestate", "me.com", "about me"],
-    ["Acme", "Albany", "NY", "http://www.acme.com", "Coyote is after you."],
-    ["Sears", "Clifton", "NJ", "http://www.sears.com", "Everyting for the home."],
-    ["Walmart", "Bentonville", "AK", "http://www.walmart.com", "Always the low price."],
-    ["Ace Hardware", "Tulsa", "OK", "http://www.acehardware.com", "Ace is the place for the helpful hardware mammal."],
-    ["JB Hunt", "Chicago", "IL", "http://www.jbhunt.com", "Ship it!"],
-    ["Pepsi Co", "Louisville", "KY", "http://www.pepsico.com", "You want Pepsi, not Coke"],
-    ["deleted-choose-new"]
+    ["Network", "hometown", "homestate", "me.com", "about me", "2017-04-30"],
+    ["Acme", "Albany", "NY", "http://www.acme.com", "Coyote is after you.", "2017-04-30"],
+    ["Sears", "Clifton", "NJ", "http://www.sears.com", "Everyting for the home.", "2017-04-30"],
+    ["Walmart", "Bentonville", "AK", "http://www.walmart.com", "Always the low price.", "2017-04-30"],
+    ["Ace Hardware", "Tulsa", "OK", "http://www.acehardware.com", "Ace is the place for the helpful hardware mammal.", "2017-04-30"],
+    ["JB Hunt", "Chicago", "IL", "http://www.jbhunt.com", "Ship it!", "2017-04-30"],
+    ["Pepsi Co", "Louisville", "KY", "http://www.pepsico.com", "You want Pepsi, not Coke", "2017-04-30"],
+    ["deleted"]
   ]
 }
 
@@ -187,28 +187,28 @@ def make_resources
   end
 end
 
-DATA_actions = {
-  :action_keys =>
-    ["user_id", "step_id", "job_id", "contact_id", "company_id", "date", "notes", "status", "next_step", "first_contact"],
-  :actions => [
-    [1, 2, 1, 1, 1, "2017-04-30", "get on it man!", "active", "meeting", "true"],
-    [1, 3, 2, 2, 1, "2017-03-26", "had a good phone interview", "active", "fup", "false"],
-    [2, 1, 3, 3, 1, "2017-04-15", "looking for PHP Guru", "active", "email", "true"],
-    [2, 4, 4, 4, 1, "2017-04-12", "great Rails shop, jrs welcome", "active", "fup", "false"],
-    [3, 10, 5, 1, 1, "2017-03-30", "get on it man!", "active", "call", "true"],
-    [3, 16, 1, 2, 1, "2017-05-30", "no data on this yet", "active", "send resume", "false"],
-    [4, 17, 2, 4, 1, "2017-04-03", "need to find HR contact", "active", "wait for response 1 week", "false"],
-    [4, 18, 3, 3, 1, "2017-03-28", "my friend knows a guy here", "active", "drop this one", "true"]
+DATA_todos = {
+  :todo_keys =>
+    ["user_id", "step_id", "job_id", "contact_id", "company_id", "date", "notes", "priority"],
+  :todos => [
+    [1, 2, 1, 1, 1, "2017-04-30", "get on it man!", 1],
+    [1, 3, 2, 2, 1, "2017-03-26", "had a good phone interview", 2],
+    [2, 1, 3, 3, 1, "2017-04-15", "looking for PHP Guru", 3],
+    [2, 4, 4, 4, 1, "2017-04-12", "great Rails shop, jrs welcome", 4],
+    [3, 10, 5, 1, 1, "2017-03-30", "get on it man!", 1],
+    [3, 16, 1, 2, 1, "2017-05-30", "no data on this yet", 2],
+    [4, 17, 2, 4, 1, "2017-04-03", "need to find HR contact", 3],
+    [4, 18, 3, 3, 1, "2017-03-28", "my friend knows a guy here", 1]
   ]
 }
 
-def make_actions
-  DATA_actions[:actions].each do |action|
-    new_action = Action.new
-    action.each_with_index do |attribute, i|
-      new_action.send(DATA_actions[:action_keys][i]+"=", attribute)
+def make_todos
+  DATA_todos[:todos].each do |todo|
+    new_todo = Todo.new
+    todo.each_with_index do |attribute, i|
+      new_todo.send(DATA_todos[:todo_keys][i]+"=", attribute)
     end
-    new_action.save
+    new_todo.save
   end
 end
 
@@ -291,7 +291,7 @@ def main
   make_tags
   make_users
   make_resources
-  make_actions
+  make_todos
   # make_docs
   # make_pdfs
   # make_scrapes

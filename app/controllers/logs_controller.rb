@@ -2,7 +2,7 @@ class LogsController < ApplicationController
 
 
   def action_logs
-    @logs = ActionLog.all
+    @logs = TodoLog.all
   end
 
   def user_logs

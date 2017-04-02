@@ -6,10 +6,10 @@
       <td>NOTES</td>
     </tr>
   </th>
-  <% actions.each do |action| %>
+  <% todos.each do |todo| %>
   <tr>
-    <td><%= action.step.name %></td>
-    <td><%= action.notes %></td>
+    <td><%= todo.step.name %></td>
+    <td><%= todo.notes %></td>
   </tr>
 </table>
   <% end %>

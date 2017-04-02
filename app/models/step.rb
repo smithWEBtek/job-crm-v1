@@ -1,5 +1,5 @@
 class Step < ApplicationRecord
-  has_many :actions
+  has_many :todos
 
   def tech_prep
     # study
@@ -7,7 +7,7 @@ class Step < ApplicationRecord
     # blog
   end
 
-  def branding    # (user.actions.build to complete each of these fields in Users table)
+  def branding    # (user.todos.build to complete each of these fields in Users table)
     # todo_elevator_pitch
     # todo_resume?
     # todo_twitter_url?
@@ -25,8 +25,8 @@ class Step < ApplicationRecord
   end
 
   def job_apply
-    # job_instructions_action_steps_created?
-    # job_instructions_actions_completed?
+    # job_instructions_todo_steps_created?
+    # job_instructions_todos_completed?
     # job_org_contact_info_entered?
   end
 

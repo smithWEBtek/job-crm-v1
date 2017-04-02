@@ -17,8 +17,4 @@ class StaticController < ApplicationController
   def tools
     render :tools
   end
-
-  def actions
-    # redirect_to user_actions_path
-  end
 end

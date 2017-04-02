@@ -13,24 +13,24 @@ Rails.application.routes.draw do
 
 
   get '/user_logs', to: 'logs#user_logs'
-  get '/action_logs', to: 'logs#action_logs'
-  get '/admin_actions', to: 'actions#admin'
+  get '/todo_logs', to: 'logs#todo_logs'
+  get '/admin_todos', to: 'todos#admin'
 
   resources :steps, :tags, :resources
 
   resources :companies do 
-    # resources :actions
+    # resources :todos
   end
 
   resources :jobs do 
-    # resources :actions
+    # resources :todos
   end
 
   resources :contacts do 
-    # resources :actions
+    # resources :todos
   end
 
   resources :users do 
-    resources :actions
+    resources :todos
   end
 end

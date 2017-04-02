@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   # before_action :authorize_admin, only: [:destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:show]
-  # before_action :load_models
 
   def index
     @users = User.all
@@ -10,8 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @action = @user.actions.build
-    @user_actions = current_user.actions
+    @todo = @user.todos.build
+    @user_todos = current_user.todos
   end
 
   def new
@@ -60,8 +59,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password,
-      logs_attributes: [:user_id, :date, :note],
-    meals_attributes: [:user_id, :mealdate, :mealname_id, :food_id, :new_food, :qty, :note])
+    params.require(:user).permit(:email, :password)
   end
 end

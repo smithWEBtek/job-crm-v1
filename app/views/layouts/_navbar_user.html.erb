@@ -12,7 +12,7 @@
   <button><%= link_to "Companies", companies_path %></button>
   <button><%= link_to "Contacts", contacts_path %></button>
   <button><%= link_to "Jobs", jobs_path %></button>
-  <button><%= link_to "Actions", user_actions_path(1) %></button>
+  <button><%= link_to "Todos", user_todos_path(current_user) %></button>
   <button><%= link_to "Resources", resources_path %></button>
   <button><%= link_to "Tags", tags_path %></button>
 <% end %>

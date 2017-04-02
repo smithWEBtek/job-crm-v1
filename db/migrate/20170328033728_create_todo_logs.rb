@@ -1,7 +1,7 @@
-class CreateActionLogs < ActiveRecord::Migration[5.0]
+class CreateTodoLogs < ActiveRecord::Migration[5.0]
   def change
-    create_table :action_logs do |t|
-      t.integer :action_id
+    create_table :todo_logs do |t|
+      t.integer :todo_id
       t.date :log_date
       t.string :step
       t.text :notes

@@ -15,40 +15,15 @@ ActiveRecord::Schema.define(version: 20170328034355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "action_logs", force: :cascade do |t|
-    t.integer  "action_id"
-    t.date     "log_date"
-    t.string   "step"
-    t.text     "notes"
-    t.string   "status"
-    t.string   "next_step"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "actions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "step_id",       default: 1
-    t.integer  "job_id",        default: 1
-    t.integer  "contact_id",    default: 1
-    t.integer  "company_id",    default: 1
-    t.date     "date"
-    t.text     "notes"
-    t.string   "status"
-    t.string   "next_step"
-    t.boolean  "first_contact"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.string   "city"
     t.string   "state"
     t.string   "url"
     t.text     "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.date     "first_contact_date"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -120,6 +95,30 @@ ActiveRecord::Schema.define(version: 20170328034355) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "todo_logs", force: :cascade do |t|
+    t.integer  "todo_id"
+    t.date     "log_date"
+    t.string   "step"
+    t.text     "notes"
+    t.string   "status"
+    t.string   "next_step"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "step_id",    default: 1
+    t.integer  "job_id",     default: 1
+    t.integer  "contact_id", default: 1
+    t.integer  "company_id", default: 1
+    t.date     "date"
+    t.text     "notes"
+    t.integer  "priority",   default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "user_logs", force: :cascade do |t|

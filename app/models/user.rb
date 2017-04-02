@@ -5,11 +5,11 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :trackable, :validatable
           # :omniauthable, omniauth_providers: [:github]
 
-  has_many :actions
-  has_many :jobs, through: :actions
-  has_many :contacts, through: :actions
-  has_many :companies, through: :actions
-  has_many :steps, through: :actions
+  has_many :todos
+  has_many :jobs, through: :todos
+  has_many :contacts, through: :todos
+  has_many :companies, through: :todos
+  has_many :steps, through: :todos
   has_many :resources
   has_many :user_logs
 

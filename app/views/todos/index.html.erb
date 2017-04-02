@@ -1,0 +1,29 @@
+<div>
+<h1>User Todos</h1>
+  <table>
+    <th>
+      <h4><tr align="left"><strong>
+        <td>delete</td>
+        <td>date</td>
+        <td>priority</td>
+        <td>job</td>
+        <td>contact</td>
+        <td>company</td>
+        <td>notes</td>
+        <td>step</td>   
+      </strong></tr></h4>
+    </th>
+    <% @todos.each do |todo| %>
+    <tr>
+      <td><%= link_to 'Delete', user_todo_path(todo.user, todo), :method => :delete, :confirm => 'Are you sure?' %></td>
+      <td><%= todo.date %></td>
+      <td><%= todo.date %></td>
+      <td><%= todo.priority %></td>
+      <td><%= link_to todo.job.title, job_path(todo.job) %></td>
+      <td><%= link_to todo.company.name, company_path(todo.company) %></td>
+      <td><%= todo.notes %></td>
+      <td><%= todo.step.name %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
