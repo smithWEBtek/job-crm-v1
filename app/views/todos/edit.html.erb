@@ -1,0 +1,28 @@
+
+<%= form_for(@todo, url: edit_user_todo_path(@todo.user_id)) do |f| %>
+  
+  <%= f.hidden_field :user_id %><br>
+
+  <%= f.label :date %>
+  <%= f.date_field :date %><br>
+   
+  <%= f.label :priority %>
+  <%= f.select :priority, options_for_select(1..5) %><br>
+    
+  <%= f.label :step %>
+  <%= f.collection_select :step_id, Step.all, :id, :name %><br>
+
+  <%= f.label :notes %>
+  <%= f.text_area :notes %><br>
+
+  <%= f.label :job %>
+  <%= f.collection_select :job_id, Job.all, :id, :title %><br>
+
+  <%= f.label :contact %>
+  <%= f.collection_select :contact_id, Contact.all, :id, :name %><br>
+
+  <%= f.label :company %>
+  <%= f.collection_select :company_id, Company.all, :id, :name %><br>
+
+  <%= f.submit %>
+<% end %>

@@ -26,6 +26,11 @@ class TodosController < ApplicationController
     # render { partial: 'todos/user_todos', locals: { todos: @user_todos }, layout: false }
     # render 'todos/user_todos', locals: { todos: @user_todos }
     # render partial: 'todos/user_todos', layout: false  
+
+    respond_to do |format|
+      format.html { render 'index.html'}
+      format.js { render 'index.js'}
+    end
   end
    
   def show
@@ -39,9 +44,10 @@ class TodosController < ApplicationController
   def create
     @todo = current_user.todos.build(todo_params)
     if @todo.save
-      flash[:message] = 'Todo created.'
+      flash[:notice] = 'Todo created.'
       # redirect_to user_todos_path(current_user)
-      redirect_to user_path(current_user)
+      # redirect_to user_path(current_user)
+      render 'todos/todo', layout: false
     else
       render 'todos/show'
     end
@@ -53,16 +59,20 @@ class TodosController < ApplicationController
   def update
     @todo.update(todo_params)
     if @todo.save
-      flash[:message] = 'Todo updated.'
-      redirect_to todo_path(@todo)
+      flash[:notice] = 'Todo updated.'
+      redirect_to user_todos_path(current_user)
     else
       render :edit
     end
   end
 
   def destroy
-    @todo.delete
-    redirect_to user_todos_path(current_user)
+    if @todo.delete
+      flash[:notice] = 'Todo deleted.'
+      redirect_to user_todos_path(current_user)
+    else
+      render user_todos_path(current_user)
+    end
   end
 
   private

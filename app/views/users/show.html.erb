@@ -5,22 +5,18 @@
  <h4>Todos rendered via partial: </h4>
   <%= render partial: 'todos/user_todos' %>
 
-<!-- <div id="user-todos-new">
-  <ol></ol>–
-</div> -->
+<div id="user-todos-new">
+  <ol></ol>
+</div>
  
 <%#= form_for(@todo, method: 'post', url: user_todos_path(@user)) do |f| %>
-<%= form_for([@user, @todo]) do |f| %>
-  
-  <% f.hidden_field :user_id %>
 
-  <%= f.label :company %><br>
-  <%= f.collection_select :company_id, Company.all, :id, :name %><br>
-
-  <%= f.label :notes %><br>
-  <%= f.text_area :notes %><br>
-  <%= f.submit %>
-<% end %>
+  <%= form_for([@user, @todo]) do |f| %>
+    <% f.hidden_field :user_id %>
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %><br>
+    <%= f.submit %>
+  <% end %>
 
 
 <%#= form_for(@user_log, method: 'post', url: user_logs_path) do |f| %>

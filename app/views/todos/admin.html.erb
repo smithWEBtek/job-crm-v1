@@ -4,6 +4,7 @@
     <th>
       <h4><tr align="left"><strong>
         <td>date</td>
+        <td>user</td>
         <td>priority</td>
         <td>job</td>
         <td>contact</td>
@@ -15,6 +16,7 @@
     <% @todos.each do |todo| %>
     <tr>
       <td><%= todo.date %></td>
+      <td><%= link_to todo.user.email, user_path(todo.user) %></td>
       <td><%= todo.priority %></td>
       <td><%= link_to todo.job.title, job_path(todo.job) %></td>
       <td><%= todo.contact.fname.concat(todo.contact.lname) %></td>

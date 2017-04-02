@@ -4,25 +4,29 @@
     <th>
       <h4><tr align="left"><strong>
         <td>delete</td>
+        <td>edit</td>
+        <td>id</td>
         <td>date</td>
         <td>priority</td>
+        <td>step</td>   
+        <td>notes</td>
         <td>job</td>
         <td>contact</td>
         <td>company</td>
-        <td>notes</td>
-        <td>step</td>   
       </strong></tr></h4>
     </th>
     <% @todos.each do |todo| %>
     <tr>
-      <td><%= link_to 'FDelete', user_todo_path(todo.user_id, todo.id), method: 'delete' %></td>
-      <td><%= todo.date %></td>
+      <td><%= link_to 'x', user_todo_path(todo.user_id, todo.id), method: 'delete' %></td>
+      <td><%= link_to 'edit', user_todo_path(todo.user_id, todo.id), method: 'patch' %></td>
+      <td><%= todo.id %></td>
       <td><%= todo.date %></td>
       <td><%= todo.priority %></td>
-      <td><%= link_to todo.job.title, job_path(todo.job) %></td>
-      <td><%= link_to todo.company.name, company_path(todo.company) %></td>
-      <td><%= todo.notes %></td>
       <td><%= todo.step.name %></td>
+      <td><%= todo.notes %></td>
+      <td><%= link_to todo.job.title, job_path(todo.job) %></td>
+      <td><%= link_to todo.contact.name, contact_path(todo.contact) %></td>
+      <td><%= link_to todo.company.name, company_path(todo.company) %></td>
     </tr>
   <% end %>
   </table>

@@ -136,17 +136,27 @@
 // C. using data from ajax post request, create a corresponding new "user todo" 
 // D. send back hTML/JSON/JS of the new user_todo and inject into DOM
 
-// $(function() {
-//   $("div#add-user-todo").on("submit", function(e) {
-//     $.ajax({
-//       method: "POST",
-//       url: this.href
-//     }).success(function(response) {
-//       // document.getElementById("user-todos-new").innerHTML = response
-//       $("div#user-todos-new").html(response)
-//     }).error(function(notNeeded) {
-//       alert("we broke!!")
-//     })
-//     e.preventDefault();
-//   })
-// })
+$(function() {
+  $("#new_todo").on("submit", function(e) {
+    let url = this.action
+    let data = {
+      'authenticity_token': $("input[name='authenticity_token']").val(),
+      'todo': {
+        'notes': $("#todo_notes").val()
+      }
+    }
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(response) {
+        debugger
+      }
+    }).success(function() {
+      $("div#user-todos-new").append(data)
+    }).error(function(notNeeded) {
+      alert("we broke!!")
+    })
+    e.preventDefault();
+  })
+})

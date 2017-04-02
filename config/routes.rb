@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/users/:id/contacts', to: 'users#contacts'
   # post '/users/sign_up', to: 'users#create'
 
+  delete '/users/:id/todos/:id/edit', to: 'todos#destroy'
+  get '/users/:id/todos/:id/edit', to: 'todos#edit'
+  patch '/users/:id/todos/:id/edit', to: 'todos#update'
 
   get '/user_logs', to: 'logs#user_logs'
   get '/todo_logs', to: 'logs#todo_logs'
