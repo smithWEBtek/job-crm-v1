@@ -1,44 +1,29 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="page-header">
-      <h1>Contacts</h1></div>
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Company</th>
-            <th>Title </th>
-            <th>Email </th>
-            <th>Phone </th>
-            <th>URL </th>
-            <th>About </th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @contacts.each do |contact| %>
-          <tr>
-            <td><%= contact.id %>
-            <td><%= link_to contact.fname.concat(contact.lname), contact_path(contact) %></td>
-            <td><%= contact.company.name %></td>
-            <td><%= contact.title %></td>
-            <td><%= contact.email %></td>
-            <td><%= contact.phone %></td>
-            <td><%= contact.url %></td>
-            <td><%= contact.about %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-    <nav>
-      <ul class="pagination">
-        <li><a aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-        <li><a>1</a></li>
-        <li><a>2</a></li>
-        <li><a aria-label="Next"><span aria-hidden="true">»</span></a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
+<h2>contacts</h2>
+<table>
+  <th class="col-large">
+    <tr align="left">
+      <td>id</td>
+      <td>name</td>
+      <td>company</td>
+      <td>title</td>
+      <td>email</td>
+      <td>phone</td>
+      <td>url</td>
+      <td>about</td>
+    </tr>
+  </th>
+<tr>
+
+<% @contacts.each do |contact| %>
+<tr>
+  <td><%= contact.id %>
+  <td><%= link_to contact.fname.concat(contact.lname), contact_path(contact) %></td>
+  <td><%= contact.company.name %></td>
+  <td><%= contact.title %></td>
+  <td><%= contact.email %></td>
+  <td><%= contact.phone %></td>
+  <td><%= contact.url %></td>
+  <td><%= contact.about %></td>
+  <% end %>
+</tr>
+</table>

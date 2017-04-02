@@ -1,25 +1,35 @@
-<div>
-<h3>User Jobs</h3>
-  <table>
-    <th>
-      <tr><strong>
-        <td>title</td>
-        <td>company</td>
-        <td>job</td>
-        <td>description</td>
-        <td>requirements</td>
-        <td>instructions</td>
-       </strong></tr>
-   </th>
-    <% @jobs.each do |job| %>
+<h2>jobs</h2>
+<table>
+  <th>
     <tr>
-      <td><%= job.title %></td>
+      <td>company</td>
+      <td>title</td>
+      <td>description</td>
+      <td>requirements</td>
+      <td>instructions</td>
+      <td>link</td>
+    </tr>
+  </th>
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= link_to 'link', job.url %></td>
       <td><%= link_to job.company.name, company_path(job.company) %></td>
-      <td><%= link_to job.title, job.url %></td>
+      <td><%= link_to job.title, job_path(job) %></td>
       <td><%= job.description %></td>
       <td><%= job.requirements %></td>
       <td><%= job.instructions %></td>
     </tr>
   <% end %>
-  </table>
-</div>
+</table>
+
+
+<h2>jobs</h2>
+  <% @jobs.each do |job| %>
+<p>company: <%= link_to job.company.name, company_path(job.company) %><br>
+  title: <%= link_to job.title, job_path(job) %><br>
+  posting: <%= link_to 'link', job.url %><br>
+  description: <%= job.description %><br>
+  requirements: <%= job.requirements %><br>
+  instructions: <%= job.instructions %></p>
+<hr>
+<% end %>
