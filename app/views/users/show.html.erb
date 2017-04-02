@@ -1,16 +1,11 @@
 <h3>user: <%= @user.email %></h3>
 
-<!-- <h4><%#= link_to "Show User Todos", user_todos_path(@user), class: "load-user-todos", remote: true %></h4>
- -->
- <h4>Todos rendered via partial: </h4>
-  <%= render partial: 'todos/user_todos' %>
-
 <div id="user-todos-new">
-  <ol></ol>
+  <p>Todos rendered via partial: </p>
+  <%= render partial: 'todos/user_todos' %>
 </div>
  
 <%#= form_for(@todo, method: 'post', url: user_todos_path(@user)) do |f| %>
-
   <%= form_for([@user, @todo]) do |f| %>
     <% f.hidden_field :user_id %>
     <%= f.label :notes %><br>
@@ -26,11 +21,6 @@
 <%# end %>
 
 
-<!-- 
-<div id="add-user-todo">
-<form method="post", todo="/users/:id/todos">
-  <textarea></textarea><br>
-  <input type="submit">
-</form>
-</div> -->
-
+<!-- <h4><%#= link_to "Show User Todos", user_todos_path(@user), class: "load-user-todos", remote: true %></h4>
+ -->
+ 

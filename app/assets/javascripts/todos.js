@@ -127,8 +127,6 @@
 // 9. User gets data, wicked fast!, page didn't have to reload.
 
 
-
-
 // SUBMITTING a FORM via AJAX (5 ways)
 // A. hijack the submit event of the FORM
 // B. take form data and send to the server as AJAX post request
@@ -148,12 +146,13 @@ $(function() {
     $.ajax({
       type: "POST",
       url: url,
-      data: data,
-      success: function(response) {
-        debugger
-      }
-    }).success(function() {
-      $("div#user-todos-new").append(data)
+      data: data
+    }).success(function(response) {
+      $("#todo_notes").val("")
+
+      var $ol = $("div#user-todos-new")
+      $ol.append(response)
+      alert("Todo created by AJAX injection!!")
     }).error(function(notNeeded) {
       alert("we broke!!")
     })

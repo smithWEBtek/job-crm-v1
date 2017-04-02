@@ -44,10 +44,10 @@ class TodosController < ApplicationController
   def create
     @todo = current_user.todos.build(todo_params)
     if @todo.save
-      flash[:notice] = 'Todo created.'
+      flash[:notice] = 'Todo created by RAILS!'
       # redirect_to user_todos_path(current_user)
-      # redirect_to user_path(current_user)
-      render 'todos/todo', layout: false
+      redirect_to user_path(current_user)
+      # render 'todos/todo', layout: false
     else
       render 'todos/show'
     end
