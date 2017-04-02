@@ -40,7 +40,8 @@ class TodosController < ApplicationController
     @todo = current_user.todos.build(todo_params)
     if @todo.save
       flash[:message] = 'Todo created.'
-      redirect_to user_todos_path(current_user)
+      # redirect_to user_todos_path(current_user)
+      redirect_to user_path(current_user)
     else
       render 'todos/show'
     end

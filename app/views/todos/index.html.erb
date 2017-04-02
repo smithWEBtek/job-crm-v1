@@ -15,7 +15,7 @@
     </th>
     <% @todos.each do |todo| %>
     <tr>
-      <td><%= link_to 'Delete', user_todo_path(todo.user, todo), :method => :delete, :confirm => 'Are you sure?' %></td>
+      <td><%= link_to 'FDelete', user_todo_path(todo.user_id, todo.id), method: 'delete' %></td>
       <td><%= todo.date %></td>
       <td><%= todo.date %></td>
       <td><%= todo.priority %></td>

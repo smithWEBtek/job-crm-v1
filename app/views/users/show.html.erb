@@ -3,15 +3,14 @@
 <!-- <h4><%#= link_to "Show User Todos", user_todos_path(@user), class: "load-user-todos", remote: true %></h4>
  -->
  <h4>Todos rendered via partial: </h4>
-  <%= render partial: 'todos/user_todos', locals: { todos: @user_todos } %>
+  <%= render partial: 'todos/user_todos' %>
 
 <!-- <div id="user-todos-new">
   <ol></ol>–
 </div> -->
-
-<%= user_todos_path(@user) %>
-<%#= form_for([@user, @todo]) do |f| %>
-<%= form_for(@todo, method: 'post', url: user_todos_path(@user)) do |f| %>
+ 
+<%#= form_for(@todo, method: 'post', url: user_todos_path(@user)) do |f| %>
+<%= form_for([@user, @todo]) do |f| %>
   
   <% f.hidden_field :user_id %>
 
