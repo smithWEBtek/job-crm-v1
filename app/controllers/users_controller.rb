@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @todo = @user.todos.build
-    @user_todos = current_user.todos
+    @todos = current_user.todos
   end
 
   def new

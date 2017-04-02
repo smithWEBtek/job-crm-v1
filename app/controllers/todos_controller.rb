@@ -10,10 +10,8 @@ class TodosController < ApplicationController
     @company_todos = Todo.all.where(company_id: params[:company_id])
     @contact_todos = Todo.all.where(contact_id: params[:contact_id])
     @job_todos = Todo.all.where(job_id: params[:job_id])    
-    @user_todos = current_user.todos
-    @todos = Todo.all
-
-
+    @todos = current_user.todos
+   
     # render 'todos/index', layout: false
     # render :index, layout: false
     # render layout: false
@@ -27,10 +25,11 @@ class TodosController < ApplicationController
     # render 'todos/user_todos', locals: { todos: @user_todos }
     # render partial: 'todos/user_todos', layout: false  
 
-    respond_to do |format|
-      format.html { render 'index.html'}
-      format.js { render 'index.js'}
-    end
+    # respond_to do |format|
+    #   format.html { render 'index.html'}
+    #   format.js { render 'index.js'}
+    # end
+    # render 'index.js', layout: false
   end
    
   def show
@@ -44,10 +43,12 @@ class TodosController < ApplicationController
   def create
     @todo = current_user.todos.build(todo_params)
     if @todo.save
-      flash[:notice] = 'Todo created by RAILS!'
+      # flash[:notice] = 'Todo created by RAILS!'
       # redirect_to user_todos_path(current_user)
-      redirect_to user_path(current_user)
+      # redirect_to user_path(current_user)
       # render 'todos/todo', layout: false
+      render 'index.js', layout: false
+
     else
       render 'todos/show'
     end

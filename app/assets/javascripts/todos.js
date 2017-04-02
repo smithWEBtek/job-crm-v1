@@ -134,28 +134,113 @@
 // C. using data from ajax post request, create a corresponding new "user todo" 
 // D. send back hTML/JSON/JS of the new user_todo and inject into DOM
 
-$(function() {
-  $("#new_todo").on("submit", function(e) {
-    let url = this.action
-    let data = {
-      'authenticity_token': $("input[name='authenticity_token']").val(),
-      'todo': {
-        'notes': $("#todo_notes").val()
-      }
-    }
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: data
-    }).success(function(response) {
-      $("#todo_notes").val("")
 
-      var $ol = $("div#user-todos-new")
-      $ol.append(response)
-      alert("Todo created by AJAX injection!!")
-    }).error(function(notNeeded) {
-      alert("we broke!!")
-    })
-    e.preventDefault();
-  })
-})
+// 1st way: 
+// $(function() {
+//   $("#new_todo").on("submit", function(e) {
+//     let url = this.action
+//     let data = {
+//       'authenticity_token': $("input[name='authenticity_token']").val(),
+//       'todo': {
+//         'notes': $("#todo_notes").val()
+//       }
+//     }
+//     $.ajax({
+//       type: "POST",
+//       url: url,
+//       data: data
+//     }).success(function(response) {
+//       $("#todo_notes").val("")
+
+//       var $ol = $("div#user-todos-new")
+//       $ol.append(response)
+//       alert("Todo created by AJAX injection!!")
+//     }).error(function(notNeeded) {
+//       alert("we broke!!")
+//     })
+//     e.preventDefault();
+//   })
+// })
+
+// 2nd way
+// $(function() {
+//   $("#new_todo").on("submit", function(e) {
+//     //1. need the URL to submit the POST request to
+//     //2. need the form DATA
+//     //3. specify 'type', of action, shows _method if hidden (patch)
+//     //   otherwise 'this.method'
+//     $.ajax({
+//       type: ($("input[name='_method']").val() || this.method),
+//       url: this.action,
+//       data: this.serialize(); // either JSON or query string serializing
+
+//     }).success(function(response) {
+//       $("#todo_notes").val("")
+//       var $ol = $("div#user-todos-new")
+//       $ol.append(response)
+//       alert("Todo created by AJAX injection!!")
+//     }).error(function(notNeeded) {
+//       alert("we broke!!")
+//     })
+//     e.preventDefault();
+//   })
+// })
+
+// 3rd way   (remote: true, in link)
+// 1. add 'remote: true' to form_for signature like this: 
+//   <%= form_for([@user, @todo], remote: true) do |f| %>
+// 2. create a js file and point controller 'create' to it: 
+//       render 'index.js', layout: false
+// 3. copy the code from just after 'success', it goes in that js file
+// 
+//     controllers/todos/index.js.erb
+//    
+//       $("#todo_notes").val("")
+//       var $ol = $("div#user-todos-new")
+//       $ol.append(response)
+//       alert("Todo created by AJAX injection!!")
+// 
+// 4. j render, to provide an html string for injection
+//    replace 'response' with html string
+//      a.
+//       $("#todo_notes").val("")
+//       var $ol = $("div#user-todos-new")
+//       $ol.append(--html-string--result of 'j render'---)
+//       alert("Todo created by AJAX injection!!")
+//      b.
+// 
+//       $("#todo_notes").val("")
+//       var $ol = $("div#user-todos-new")
+//       $ol.append("j(render('todos/todos')")
+//       alert("Todo created by AJAX injection!!")
+// 
+// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

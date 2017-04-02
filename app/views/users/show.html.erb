@@ -2,11 +2,13 @@
 
 <div id="user-todos-new">
   <p>Todos rendered via partial: </p>
-  <%= render partial: 'todos/user_todos' %>
+  <%#= render partial: 'todos/todos', locals: { todos: @todos } %>
+  <%= render 'todos/todos' %>
+
 </div>
  
 <%#= form_for(@todo, method: 'post', url: user_todos_path(@user)) do |f| %>
-  <%= form_for([@user, @todo]) do |f| %>
+  <%= form_for([@user, @todo], remote: true) do |f| %>
     <% f.hidden_field :user_id %>
     <%= f.label :notes %><br>
     <%= f.text_area :notes %><br>

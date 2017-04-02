@@ -1,5 +1,3 @@
-<% @user_todos.each do |todo| %>
-<ul>
-  <li><%= todo.step.name %>: <%= todo.notes %></li>
-</ul>
+<% current_user.todos.each do |todo| %>
+<p><%= todo.notes %></p>
 <% end %>
