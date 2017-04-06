@@ -1,5 +1,10 @@
 <h1>Users</h1>
-
 <% @users.each do |user| %>
   <%= link_to user.email, user_path(user) %><br>
+<% end %>
+
+<% content_for :js do %>
+  <script>
+    // alert('This is the Users Index, msg via JS.');
+  </script>
 <% end %>
