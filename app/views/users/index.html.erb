@@ -3,8 +3,9 @@
   <%= link_to user.email, user_path(user) %><br>
 <% end %>
 
+
 <% content_for :js do %>
-  <script>
-    // alert('This is the Users Index, msg via JS.');
+  <script type="text/javascript">
+    // alert("You have reached the Users Index, msg provided by JavaScript.")
   </script>
 <% end %>
