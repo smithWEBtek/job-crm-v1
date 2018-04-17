@@ -1,14 +1,14 @@
 DATA_companies = {
   :company_keys =>
-    ["name", "city", "state", "url", "about", "first_contact_date"],
+    ["name", "city", "state", "url", "about"],
   :companies => [
-    ["Network", "hometown", "homestate", "me.com", "about me", "2017-04-30"],
-    ["Acme", "Albany", "NY", "http://www.acme.com", "Coyote is after you.", "2017-04-30"],
-    ["Sears", "Clifton", "NJ", "http://www.sears.com", "Everyting for the home.", "2017-04-30"],
-    ["Walmart", "Bentonville", "AK", "http://www.walmart.com", "Always the low price.", "2017-04-30"],
-    ["Ace Hardware", "Tulsa", "OK", "http://www.acehardware.com", "Ace is the place for the helpful hardware mammal.", "2017-04-30"],
-    ["JB Hunt", "Chicago", "IL", "http://www.jbhunt.com", "Ship it!", "2017-04-30"],
-    ["Pepsi Co", "Louisville", "KY", "http://www.pepsico.com", "You want Pepsi, not Coke", "2017-04-30"],
+    ["Network", "hometown", "homestate", "me.com", "about me"],
+    ["Acme", "Albany", "NY", "http://www.acme.com", "Coyote is after you."],
+    ["Sears", "Clifton", "NJ", "http://www.sears.com", "Everything for the home."],
+    ["Walmart", "Bentonville", "AK", "http://www.walmart.com", "Always the low price."],
+    ["Ace Hardware", "Tulsa", "OK", "http://www.acehardware.com", "Ace is the place for the helpful hardware mammal."],
+    ["JB Hunt", "Chicago", "IL", "http://www.jbhunt.com", "Ship it!"],
+    ["Pepsi Co", "Louisville", "KY", "http://www.pepsico.com", "You want Pepsi, not Coke"],
     ["deleted"]
   ]
 }
@@ -108,34 +108,6 @@ def make_steps
   end
 end
  
-DATA_tags ={
- :tag_keys =>
-    ["name"],
-  :tags => [
-    ["read"],
-    ["blog"],
-    ["networking"],
-    ["tutorial"],
-    ["meetup"],
-    ["ruby"],
-    ["branding"],
-    ["js"],
-    ["rails"],
-    ["book"],
-    ["tool"],
-    ["snippet"]
-  ]
-}
-
-def make_tags
-  DATA_tags[:tags].each do |tag|
-    new_tag = Tag.new
-    tag.each_with_index do |attribute, i|
-      new_tag.send(DATA_tags[:tag_keys][i]+"=", attribute)
-    end
-    new_tag.save
-  end
-end
 
 DATA_users ={
  :user_keys =>
@@ -164,34 +136,11 @@ def make_users
   end
 end
 
-DATA_resources = {
-  :resource_keys =>
-    ["name", "format", "location", "description", "user_id"],
-  :resources => [
-    ["brad-smith-resume-v1", "doc", "lib/assets/resources/docs", "brad's resume v1", 1],
-    ["brad-smith-cover-letter-v1", "doc", "lib/assets/resources/docs", "generic cover letter v1", 1],
-    ["brad-smith-bio-v1", "doc", "lib/assets/resources/docs", "short bio", 1],
-    ["brad-smith-projects-v1", "doc", "lib/assets/resources/docs", "list of projects and participation", 1],
-    ["brad-smith-ERD-sample-v1", "pdf", "lib/assets/resources/docs", "ERD from project1", 1],
-    ["brad-smith-video-intro-v1", "mp4", "lib/assets/resources/videos", "video intro & coding session", 1]
-  ]
-}
-
-def make_resources
-  DATA_resources[:resources].each do |resource|
-    new_resource = Resource.new
-    resource.each_with_index do |attribute, i|
-      new_resource.send(DATA_resources[:resource_keys][i]+"=", attribute)
-    end
-    new_resource.save
-  end
-end
-
 DATA_todos = {
   :todo_keys =>
-    ["user_id", "step_id", "job_id", "contact_id", "company_id", "date", "notes", "priority"],
+    ["user_id", "step_id", "job_id", "contact_id", "company_id", "due_date", "description", "priority"],
   :todos => [
-    [1, 2, 1, 1, 1, "2017-04-30", "get on it man!", 1],
+    [1, 2, 1, 1, 1, "2017-03-26", "get on it man!", 1],
     [1, 3, 2, 2, 1, "2017-03-26", "had a good phone interview", 2],
     [2, 1, 3, 3, 1, "2017-04-15", "looking for PHP Guru", 3],
     [2, 4, 4, 4, 1, "2017-04-12", "great Rails shop, jrs welcome", 4],
@@ -211,90 +160,14 @@ def make_todos
     new_todo.save
   end
 end
-
-# DATA_docs ={
-#  :doc_keys =>
-#     ["file_name"],
-#   :docs => [
-#     ["my-resume-v1", "lib/assets/resources/docs/"],
-#     ["my-cover-letter-v1", "lib/assets/resources/docs/"],
-#     ["30sec-elevator-pitch", "lib/assets/resources/docs/"],
-#     ["30sec-describe-my-app", "lib/assets/resources/docs/"],
-#     ["references", "lib/assets/resources/docs/"],
-#     ["30sec-tech-bio", "lib/assets/resources/docs/"]
-#   ]
-# }
-
-# def make_docs
-#   DATA_docs[:docs].each do |doc|
-#     new_doc = Doc.new
-#     doc.each_with_index do |attribute, i|
-#       new_doc.send(DATA_docs[:doc_keys][i]+"=", attribute)
-#     end
-#     new_doc.save
-#   end
-# end
-
-# DATA_pdfs ={
-#  :pdf_keys =>
-#     ["file_name"],
-#   :pdfs => [
-#     ["myapp-ERD", "lib/assets/resources/docs/"],
-#     ["12steps-to-software-engineering-gig", "lib/assets/resources/docs/"],
-#     ["How I Changed Careers to Web Dev", "lib/assets/resources/docs/"],
-#     ["Technical Skills Map for 2017 Web Developer", "lib/assets/resources/docs/"],
-#     ["myapp-landing-page-screenshot1", "lib/assets/resources/docs/"]
-#   ]
-# }
-
-# def make_pdfs
-#   DATA_pdfs[:pdfs].each do |pdf|
-#     new_pdf = Pdf.new
-#     pdf.each_with_index do |attribute, i|
-#       new_pdf.send(DATA_pdfs[:pdf_keys][i]+"=", attribute)
-#     end
-#     new_pdf.save
-#   end
-# end
-
-# DATA_scrapes ={
-#  :scrape_keys =>
-#     ["file_name", "location"],
-#   :scrapes => [
-#     ["companies", "lib/assets/resources/docs/"],
-#     ["contacts", "lib/assets/resources/docs/"],
-#     ["centers_of_influence", "lib/assets/resources/docs/"],
-#     ["events", "lib/assets/resources/docs/"],
-#     ["rails_shops_near_me", "lib/assets/resources/docs/"],
-#     ["javascript_jobs", "lib/assets/resources/docs/"],
-#     ["jobs_with_JR_in_title"]
-#   ]
-# }
-
-# def make_scrapes
-#   DATA_scrapes[:scrapes].each do |scrape|
-#     new_scrape = Scrape.new
-#     scrape.each_with_index do |attribute, i|
-#       new_scrape.send(DATA_scrapes[:scrape_keys][i]+"=", attribute)
-#     end
-#     new_scrape.save
-#   end
-# end
-
-
-
+ 
 def main
   make_companies
   make_contacts
   make_jobs
   make_steps
-  make_tags
   make_users
-  make_resources
   make_todos
-  # make_docs
-  # make_pdfs
-  # make_scrapes
 end
 
 main

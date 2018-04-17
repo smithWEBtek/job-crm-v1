@@ -1,3 +1,4 @@
-<% current_user.todos.each do |todo| %>
-<p><%= todo.notes %></p>
+<% todos.each do |todo| %>
+	<p><%= todo.due_date %></p>
+	<p><%= todo.description %></p>
 <% end %>

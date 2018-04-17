@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328034355) do
+ActiveRecord::Schema.define(version: 20170328033728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,17 +34,11 @@ ActiveRecord::Schema.define(version: 20170328034355) do
     t.string   "email"
     t.string   "phone"
     t.string   "url"
+    t.string   "linkedin"
+    t.string   "twitter"
     t.text     "about"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-  end
-
-  create_table "docs", force: :cascade do |t|
-    t.string   "file_name"
-    t.string   "location"
-    t.integer  "resource_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -58,30 +52,11 @@ ActiveRecord::Schema.define(version: 20170328034355) do
     t.datetime "updated_at",   null: false
   end
 
-  create_table "pdfs", force: :cascade do |t|
-    t.string   "file_name"
-    t.string   "location"
-    t.integer  "resource_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "resources", force: :cascade do |t|
-    t.string   "name"
-    t.string   "format"
-    t.string   "location"
-    t.text     "description"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "scrapes", force: :cascade do |t|
-    t.string   "file_name"
-    t.string   "location"
-    t.integer  "resource_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "logs", force: :cascade do |t|
+    t.integer  "todo_id"
+    t.text     "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "steps", force: :cascade do |t|
@@ -91,42 +66,17 @@ ActiveRecord::Schema.define(version: 20170328034355) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "todo_logs", force: :cascade do |t|
-    t.integer  "todo_id"
-    t.date     "log_date"
-    t.string   "step"
-    t.text     "notes"
-    t.string   "status"
-    t.string   "next_step"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "todos", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "step_id",    default: 1
-    t.integer  "job_id",     default: 1
-    t.integer  "contact_id", default: 1
-    t.integer  "company_id", default: 1
-    t.date     "date"
-    t.text     "notes"
-    t.integer  "priority",   default: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "user_logs", force: :cascade do |t|
-    t.integer  "user_id"
-    t.date     "log_date"
-    t.text     "notes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "step_id",     default: 1
+    t.integer  "job_id",      default: 1
+    t.integer  "contact_id",  default: 1
+    t.integer  "company_id",  default: 1
+    t.date     "due_date"
+    t.text     "description"
+    t.integer  "priority",    default: 1
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|

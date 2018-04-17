@@ -3,25 +3,25 @@
   <table>
     <th>
       <h4><tr align="left"><strong>
-        <td>date</td>
+        <td>due_date</td>
         <td>user</td>
         <td>priority</td>
         <td>job</td>
         <td>contact</td>
         <td>company</td>
-        <td>notes</td>
+        <td>description</td>
         <td>step</td>
       </strong></tr></h4>
     </th>
     <% @todos.each do |todo| %>
     <tr>
-      <td><%= todo.date %></td>
+      <td><%= todo.due_date %></td>
       <td><%= link_to todo.user.email, user_path(todo.user) %></td>
       <td><%= todo.priority %></td>
       <td><%= link_to todo.job.title, job_path(todo.job) %></td>
       <td><%= todo.contact.fname.concat(todo.contact.lname) %></td>
       <td><%= link_to todo.company.name, company_path(todo.company) %></td>
-      <td><%= todo.notes %></td>
+      <td><%= todo.description %></td>
       <td><%= todo.step.name %></td>
     </tr>
   <% end %>

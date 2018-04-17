@@ -7,7 +7,9 @@ class CreateContacts < ActiveRecord::Migration[5.0]
       t.string :title
       t.string :email
       t.string :phone
-      t.string :url
+			t.string :url
+			t.string :linkedin
+			t.string :twitter
       t.text :about
 
       t.timestamps
