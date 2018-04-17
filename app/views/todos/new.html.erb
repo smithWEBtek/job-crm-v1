@@ -3,8 +3,8 @@
   
   <%= f.hidden_field :user_id %><br>
 
-  <%= f.label :date %>
-  <%= f.date_field :date %><br>
+  <%= f.label :due_date %>
+  <%= f.date_field :due_date %><br>
    
   <%= f.label :priority %>
   <%= f.select :priority, options_for_select(1..5) %><br>
@@ -12,8 +12,8 @@
   <%= f.label :step %>
   <%= f.collection_select :step_id, Step.all, :id, :name %><br>
 
-  <%= f.label :notes %>
-  <%= f.text_area :notes %><br>
+  <%= f.label :description %>
+  <%= f.text_area :description %><br>
 
   <%= f.label :job %>
   <%= f.collection_select :job_id, Job.all, :id, :title %><br>

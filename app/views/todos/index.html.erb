@@ -6,10 +6,10 @@
         <td>delete</td>
         <td>edit</td>
         <td>id</td>
-        <td>date</td>
+        <td>due_date</td>
         <td>priority</td>
         <td>step</td>   
-        <td>notes</td>
+        <td>description</td>
         <td>job</td>
         <td>contact</td>
         <td>company</td>
@@ -20,10 +20,10 @@
       <td><%= link_to 'x', user_todo_path(todo.user_id, todo.id), method: 'delete' %></td>
       <td><%= link_to 'edit', user_todo_path(todo.user_id, todo.id), method: 'patch' %></td>
       <td><%= todo.id %></td>
-      <td><%= todo.date %></td>
+      <td><%= todo.due_date %></td>
       <td><%= todo.priority %></td>
       <td><%= todo.step.name %></td>
-      <td><%= todo.notes %></td>
+      <td><%= todo.description %></td>
       <td><%= link_to todo.job.title, job_path(todo.job) %></td>
       <td><%= link_to todo.contact.name, contact_path(todo.contact) %></td>
       <td><%= link_to todo.company.name, company_path(todo.company) %></td>

@@ -1,29 +1,30 @@
 <h2>contacts</h2>
 <table>
-  <th class="col-large">
-    <tr align="left">
-      <td>id</td>
-      <td>name</td>
-      <td>company</td>
-      <td>title</td>
-      <td>email</td>
-      <td>phone</td>
-      <td>url</td>
-      <td>about</td>
-    </tr>
-  </th>
-<tr>
-
-<% @contacts.each do |contact| %>
-<tr>
-  <td><%= contact.id %>
-  <td><%= link_to contact.fname.concat(contact.lname), contact_path(contact) %></td>
-  <td><%= contact.company.name %></td>
-  <td><%= contact.title %></td>
-  <td><%= contact.email %></td>
-  <td><%= contact.phone %></td>
-  <td><%= contact.url %></td>
-  <td><%= contact.about %></td>
-  <% end %>
-</tr>
+	<th class="col-large">
+		<tr align="left">
+			<td>ID</td>
+			<td>Name</td>
+			<td>Company</td>
+			<td>Title</td>
+			<td>Email</td>
+			<td>Phone</td>
+			<td>LinkedIn</td>
+			<td>Twitter</td>
+			<td>About</td>
+		</tr>
+	</th>		
+	<hr />
+	<% @contacts.each do |contact| %>
+		<tr>
+			<td><%= contact.id %>
+			<td><%= link_to contact.fname.concat(contact.lname), contact_path(contact) %></td>
+			<td><%= contact.company.name %></td>
+			<td><%= contact.title %></td>
+			<td><%= contact.email %></td>
+			<td><%= contact.phone %></td>
+			<td><%= contact.linkedin %></td>
+			<td><%= contact.twitter %></td>
+			<td><%= contact.about %></td>
+			<% end %>
+		</tr>
 </table>

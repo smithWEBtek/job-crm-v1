@@ -6,7 +6,8 @@ class TodosController < ApplicationController
     render :admin
   end
 
-  def index
+	def index
+		@user = User.find_by_id(params[:id])
     @company_todos = Todo.all.where(company_id: params[:company_id])
     @contact_todos = Todo.all.where(contact_id: params[:contact_id])
     @job_todos = Todo.all.where(job_id: params[:job_id])    
@@ -37,7 +38,7 @@ class TodosController < ApplicationController
 
   def new
     @user = current_user
-    @todo = @user.todos.build(date: Time.now)
+    @todo = @user.todos.build(due_date: Time.now)
   end
 
   def create
